@@ -129,7 +129,7 @@
   home-manager = {
     useGlobalPkgs = true;                     # use nixos system packages
     useUserPackages = true;                   # use nixos user packages
-    users.mid = import ./home.nix;
+    users.mid = import ../home-manager/home.nix;
   };
 
 }
