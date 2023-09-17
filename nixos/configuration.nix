@@ -1,128 +1,135 @@
-{ config, pkgs, ... }:{
-  # NixOs Options | https://search.nixos.org/options
-  # Packages      | https://search.nixos.org/packages
+{ config, pkgs, ... }:{                       # https://search.nixos.org/options
 
   imports = [
-    ./gnome.nix                               # personalized gnome module
-    ./hardware-configuration.nix              # generated (nixos-generate-config) hardware configuration
+    <home-manager/nixos>
+    ./gnome.nix                               # add personalized gnome de
+    ./hardware-configuration.nix              # generated hardware config
   ];
 
-  networking.hostName       = "frame";
-  time.timeZone             = "America/Los_Angeles";
-  system.stateVersion       = "23.05";
-  system.autoUpgrade.enable = true;           # auto upgrade nixos and nix packages
+  boot = {
+    loader = {
+      systemd-boot.enable = true;             # EFI boot manager
+      efi.canTouchEfiVariables = true;        # installation can modify EFI boot variables
+    };
 
-  users.users.mid = {
-    isNormalUser  = true;
-    description   = "The Middle Way";
-    extraGroups   = [ "networkmanager" "wheel" ];
-    packages      = with pkgs; [];
+    supportedFilesystems = [ "ntfs" ];        # USB Drives might have this format
   };
 
-  environment.systemPackages = with pkgs; [
-    # applications
-    alacritty                                 # terminal improvement
-    megasync                                  # cloud storage
+  environment = {
+    pathsToLink = [ "/share/zsh" ];
 
-    # browsers
-    firefox
-    chromium
-    librewolf
-    brave
+    shells = with pkgs; [
+      bash
+      nushell
+      zsh
+    ];
 
-    # command line tools
-    fortune                                   # saying that make my day
-    fzf                                       # fuzzy finder
-    gcc                                       # c compiler
-    git                                       # source control
-    neovim                                    # editor (vim like)
-    ripgrep                                   # grep replacement
-    starship                                  # prompt
-    tealdeer                                  # tldr replacement
-    yadm                                      # dotfile management
+    systemPackages = with pkgs; [
+      # applications
+      megasync                                # cloud storage
+      neovim                                  # editor (vim like)
 
-    # experimental
-    fd                                        # find replacement
-    freshfetch                                # neofetch replacement
-    helix                                     # editor (kakoune like)
-    lazygit                                   # tui git client
-    nushell                                   # modern shell written in Rust
-    sd                                        # sed replacement
-    xh                                        # curl replacement
-    xplr                                      # tui file explorer
-    zellij                                    # tmux replacement
+      # cli tools
 
-    # fonts
-    jetbrains-mono
-    lexend
-    nerdfonts
+      # fonts
+      jetbrains-mono                          # main font
+      lexend
+      nerdfonts
 
-    # printers
-    cups-brother-hll2350dw
+      # system
+      cups-brother-hll2350dw                  # home and office printer (2023)
+      fwupd                                   # firmware update service
+      tlp                                     # laptop power mgmt service
 
-    # services
-    fwupd                                     # firmware update service
-    tlp                                       # laptop power mgmt service
-  ];
+      # experimental use : maybe keep
 
-  # Audio Services ===========================
-  services.pipewire = {
-    enable = true;                            # https://pipewire.org/
-    alsa.enable = true;                       # Advanced Linux Sound Architecture
-    alsa.support32Bit = true;                 #     with 32 bit application support
-    pulse.enable = true;                      # pulse audio emulation
-  };
-  hardware.pulseaudio.enable = false;         # turn off default pulse audio to use pipewire
-  security.rtkit.enable = true;               # secure real-time scheduling for user processes (recommended)
+    ];
 
-  # Boot =====================================
-  boot.loader = {
-    systemd-boot.enable = true;               # EFI boot manager
-    efi.canTouchEfiVariables = true;          # installation can modify EFI boot variables
   };
 
-  # Flatpak ==================================
-  services.flatpak.enable = true;             # allow for user installed packages via flatpak
+  # AUDIO: turn off default pulse audio to use pipewire
+  hardware.pulseaudio.enable = false;
 
-  # File Services ============================
-  boot.supportedFilesystems = [ "ntfs" ];     # NTFS for some of my USB Drives
-
-  # Network Services =========================
-  networking.networkmanager.enable = true;    # Wifi Manager
-
-  # Printing Services ========================
-  services.printing = {
-    enable = true;
-    drivers = [ pkgs.cups-brother-hll2350dw ];
-  };
-  services.avahi = {
-    enable = true;
-    nssmdns = true;
-    openFirewall = true;                      # for a WiFi printer
+  networking= {
+    hostName = "frame";
+    networkmanager.enable = true;             # Wifi Manager
   };
 
-  # System ===================================
-  nixpkgs = {
-    overlays = [ ];
-    config.allowUnfree = true;
-  };
+  # PACKAGES: remove unfree check
+  nixpkgs.config.allowUnfree = true;
 
   nix = {
-    # This will add each flake input as a registry (giving nix3 command consistency with flakes)
-    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
-    # This will additionally add your inputs to the system's legacy channels. Making legacy nix commands consistent as well, awesome!
-    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
-
-    settings ={
+    settings = {
+      auto-optimise-store = true;
       experimental-features = [ "nix-command" "flakes" ];
-      auto-optimise-store = true;             # optimize links
     };
-    # Garbage Collector
+
+    # GARBAGE COLLECTION: https://nixos.wiki/wiki/Storage_optimization#Automation
     gc = {
-      automatic = true;                       # garbage collection << https://nixos.wiki/wiki/Storage_optimization#Automation
+      automatic = true;
       dates = "weekly";
       options = "--delete-older-than 7d";
     };
+  };
+
+  programs = {
+    zsh = {
+      enable = true;
+      autosuggestions.enable = true;
+      syntaxHighlighting.enable = true;
+    };
+  };
+
+  # AUDIO: used by pipewire
+  security.rtkit.enable = true;
+
+  services = {
+    # PRINTING: service discovery on a local network
+    avahi = {
+      enable = true;
+      nssmdns = true;
+      openFirewall = true;                  # Wifi printing
+    };
+
+    # FLATPAK: user installeble
+    flatpak.enable = true;
+
+    # AUDIO: sound services
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    };
+
+    # PRINTING: standard printing services
+    printing = {
+      enable = true;
+      drivers = [ pkgs.cups-brother-hll2350dw ];
+    };
+
+  };
+
+  system = {
+    autoUpgrade.enable = true;
+    stateVersion = "23.05";
+  };
+
+  time.timeZone = "America/Los_Angeles";
+
+  users.users.mid = {
+    isNormalUser = true;
+    description = "The Middle Way";
+    extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.zsh;
+    packages = with pkgs; [
+    ];
+  };
+
+  home-manager = {
+    useGlobalPkgs = true;                     # use nixos system packages
+    useUserPackages = true;                   # use nixos user packages
+    users.mid = import ./home.nix;
   };
 
 }

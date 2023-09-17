@@ -1,8 +1,6 @@
 { config, pkgs, ... }:{
 
-  # ===============================================================================================
   # Enable GDM and GNOME
-  # ===============================================================================================
   services.xserver = {
     enable = true;
     displayManager.gdm.enable = true;
@@ -11,12 +9,10 @@
     xkbVariant = "";
   };
 
-  # ===============================================================================================
-  #  Additions
-  # ===============================================================================================
-  # add the games pack
+  # Add the games pack
   services.gnome.games.enable = true;
-
+  
+  # Add packages
   environment.systemPackages = (with pkgs; [
     # preferred packages
     gnome-extension-manager             # improved extension manager
@@ -41,9 +37,7 @@
     gnomeExtensions.pano                # Next-gen Clipboard manager for Gnome Shell
   ]);
 
-  # ===============================================================================================
-  #  Exclusions
-  # ===============================================================================================
+  # Exclude Packages
   environment.gnome.excludePackages = (with pkgs; [
     gnome-tour                          # gnome first install tour
     gnome.cheese                        # webcam tool
@@ -54,13 +48,11 @@
     gnome.totem                         # gnome videos
     gnome.yelp                          # Help view
     xterm
-
     # gnome-photos                        # default photo app
     # gnome.geary                         # email reader
     # gnome.gnome-contacts
   ]);
 
-  # remove xterm, good terminal, just not what I like
   services.xserver.desktopManager.xterm.enable = false;    # required to remove xterm
 
 }
