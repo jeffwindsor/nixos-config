@@ -1,3 +1,6 @@
+# TODO separate out variables and pass to other files
+# like user name 'mid'
+
 { config, pkgs, ... }:{                       # https://search.nixos.org/options
 
   imports = [
@@ -25,12 +28,6 @@
     ];
 
     systemPackages = with pkgs; [
-      # applications
-      megasync                                # cloud storage
-      neovim                                  # editor (vim like)
-
-      # cli tools
-
       # fonts
       jetbrains-mono                          # main font
       lexend
@@ -40,8 +37,6 @@
       cups-brother-hll2350dw                  # home and office printer (2023)
       fwupd                                   # firmware update service
       tlp                                     # laptop power mgmt service
-
-      # experimental use : maybe keep
 
     ];
 
@@ -129,7 +124,7 @@
   home-manager = {
     useGlobalPkgs = true;                     # use nixos system packages
     useUserPackages = true;                   # use nixos user packages
-    users.mid = import ../home-manager/home.nix;
+    users.mid = import ./home-manager/home.nix;
   };
 
 }
