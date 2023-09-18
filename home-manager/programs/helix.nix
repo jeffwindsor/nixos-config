@@ -65,5 +65,5 @@
     };
   };
 
-  themes.kanagawa2 = import ./helix-theme-kanagawa2.nix;
+  themes.kanagawa2 = import ./helix/theme-kanagawa2.nix;
 }
