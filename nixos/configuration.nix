@@ -1,6 +1,6 @@
 # TODO separate out variables and pass to other files
 # like user name 'mid'
-
+ 
 { config, pkgs, ... }:{                       # https://search.nixos.org/options
 
   imports = [
@@ -37,9 +37,7 @@
       cups-brother-hll2350dw                  # home and office printer (2023)
       fwupd                                   # firmware update service
       tlp                                     # laptop power mgmt service
-
     ];
-
   };
 
   # AUDIO: turn off default pulse audio to use pipewire
@@ -67,13 +65,7 @@
     };
   };
 
-  programs = {
-    zsh = {
-      enable = true;
-      autosuggestions.enable = true;
-      syntaxHighlighting.enable = true;
-    };
-  };
+  programs.zsh.enable = true;
 
   # AUDIO: used by pipewire
   security.rtkit.enable = true;
@@ -113,17 +105,16 @@
   time.timeZone = "America/Los_Angeles";
 
   users.users.mid = {
-    isNormalUser = true;
     description = "The Middle Way";
     extraGroups = [ "networkmanager" "wheel" ];
+    isNormalUser = true;
+    packages = with pkgs; [];
     shell = pkgs.zsh;
-    packages = with pkgs; [
-    ];
   };
 
   home-manager = {
-    useGlobalPkgs = true;                     # use nixos system packages
-    useUserPackages = true;                   # use nixos user packages
+    useGlobalPkgs = true;
+    useUserPackages = true;
     users.mid = import ./home-manager/home.nix;
   };
 

@@ -1,6 +1,6 @@
 {
   # FROM : https://github.com/Misterio77/nix-starter-configs
-  description = "Jeff's NixOS Flake";
+  description = "NixOS Configuration Flake";
 
   inputs = {
     # Nixpkgs

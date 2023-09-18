@@ -11,7 +11,7 @@
 
   # Add the games pack
   services.gnome.games.enable = true;
-  
+
   # Add packages
   environment.systemPackages = (with pkgs; [
     # preferred packages
