@@ -33,12 +33,11 @@
     git             = import ./programs/git.nix;
     helix           = import ./programs/helix.nix;
     lazygit.enable  = true;
+    neovim          = import ./programs/neovim.nix { config=config; pkgs=pkgs; };
     nushell.enable  = true;
     starship        = import ./programs/starship.nix;
     tealdeer        = import ./programs/tealdeer.nix;
     zellij.enable   = true;
     zsh             = import ./programs/zsh.nix;
-
-    neovim          = import ./programs/neovim.nix { config=config; pkgs=pkgs; };
   };
 }
