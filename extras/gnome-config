@@ -1,0 +1,111 @@
+#!/usr/bin/env bash
+
+  # pop shell highlight color
+  dconf write "/org/gnome/shell/extensions/pop-shell/hint-color-rgba" "'rgb(115,206,244)'"
+
+  # interface preferences
+  dconf write "/org/gnome/desktop/interface/clock-format" "'12h'"
+  dconf write "/org/gnome/desktop/interface/clock-show-weekday" "true"
+  dconf write "/org/gnome/desktop/interface/gtk-theme" "'Adwaita-dark'"
+  dconf write "/org/gnome/desktop/interface/text-scaling-factor" "1.25"
+  dconf write "/org/gnome/desktop/peripherals/touchpad/click-method" "'fingers'"
+  dconf write "/org/gnome/desktop/peripherals/touchpad/natural-scroll" "true"
+  dconf write "/org/gnome/desktop/peripherals/touchpad/speed" "0.4"
+  dconf write "/org/gnome/desktop/peripherals/touchpad/two-finger-scrolling-enabled" "true"
+  dconf write "/org/gnome/desktop/wm/preferences/button-layout" "'close:appmenu'"
+  dconf write "/org/gnome/desktop/wm/preferences/num-workspaces" "10"
+  dconf write "/org/gnome/mutter/dynamic-workspaces" "false"
+  dconf write "/org/gtk/settings/file-chooser/clock-format" "'12h'"
+  dconf write "/org/gnome/desktop/datetime/automatic-timezone" "true"
+  dconf write "/org/gnome/desktop/interface/locate-pointer" "true"
+  dconf write "/org/gnome/desktop/calendar/show-weekdate" "true"
+  dconf write "/org/gnome/mutter/workspaces-only-on-primary" "true"
+
+  # keyboard bindings : set
+  dconf write "/org/gnome/desktop/wm/keybindings/close" "['<Super>q']"
+  dconf write "/org/gnome/desktop/wm/keybindings/minimize" "['<Super>w']"
+  dconf write "/org/gnome/desktop/wm/keybindings/move-to-workspace-1" "['<Primary><Super>1']"
+  dconf write "/org/gnome/desktop/wm/keybindings/move-to-workspace-10" "['<Primary><Super>0']"
+  dconf write "/org/gnome/desktop/wm/keybindings/move-to-workspace-2" "['<Primary><Super>2']"
+  dconf write "/org/gnome/desktop/wm/keybindings/move-to-workspace-3" "['<Primary><Super>3']"
+  dconf write "/org/gnome/desktop/wm/keybindings/move-to-workspace-4" "['<Primary><Super>4']"
+  dconf write "/org/gnome/desktop/wm/keybindings/move-to-workspace-5" "['<Primary><Super>5']"
+  dconf write "/org/gnome/desktop/wm/keybindings/move-to-workspace-6" "['<Primary><Super>6']"
+  dconf write "/org/gnome/desktop/wm/keybindings/move-to-workspace-7" "['<Primary><Super>7']"
+  dconf write "/org/gnome/desktop/wm/keybindings/move-to-workspace-8" "['<Primary><Super>8']"
+  dconf write "/org/gnome/desktop/wm/keybindings/move-to-workspace-9" "['<Primary><Super>9']"
+  dconf write "/org/gnome/desktop/wm/keybindings/panel-run-dialog" "['<Primary>space']"
+  dconf write "/org/gnome/desktop/wm/keybindings/switch-to-workspace-1" "['<Super>1']"
+  dconf write "/org/gnome/desktop/wm/keybindings/switch-to-workspace-10" "['<Super>0']"
+  dconf write "/org/gnome/desktop/wm/keybindings/switch-to-workspace-2" "['<Super>2']"
+  dconf write "/org/gnome/desktop/wm/keybindings/switch-to-workspace-3" "['<Super>3']"
+  dconf write "/org/gnome/desktop/wm/keybindings/switch-to-workspace-4" "['<Super>4']"
+  dconf write "/org/gnome/desktop/wm/keybindings/switch-to-workspace-5" "['<Super>5']"
+  dconf write "/org/gnome/desktop/wm/keybindings/switch-to-workspace-6" "['<Super>6']"
+  dconf write "/org/gnome/desktop/wm/keybindings/switch-to-workspace-7" "['<Super>7']"
+  dconf write "/org/gnome/desktop/wm/keybindings/switch-to-workspace-8" "['<Super>8']"
+  dconf write "/org/gnome/desktop/wm/keybindings/switch-to-workspace-9" "['<Super>9']"
+  dconf write "/org/gnome/desktop/wm/keybindings/toggle-fullscreen" "['<Primary><Super>m']"
+  dconf write "/org/gnome/settings-daemon/plugins/media-keys/area-screenshot" "['<Primary><Super>BackSpace']"
+  dconf write "/org/gnome/settings-daemon/plugins/media-keys/control-center" "['<Super>comma']"
+  dconf write "/org/gnome/settings-daemon/plugins/media-keys/next" "['AudioForward']"
+  dconf write "/org/gnome/settings-daemon/plugins/media-keys/previous" "['AudioRewind']"
+  dconf write "/org/gnome/settings-daemon/plugins/media-keys/window-screenshot" "['<Super>BackSpace']"
+  dconf write "/org/gnome/settings-daemon/plugins/media-keys/www" "['<Super>b']"
+  dconf write "/org/gnome/settings-daemon/plugins/media-keys/home" "['<Super>f']"
+  dconf write "/org/gnome/shell/keybindings/toggle-message-tray" "['<Super>n']"
+
+
+# extensions
+  # echo 'used to display old school icons on the menu bar (ie MEGASync)'
+  # echo 'https://extensions.gnome.org/extension/615/appindicator-support/'
+  # echo 'small tweaks (hide the applications and accessabilty icons'
+  # echo 'https://extensions.gnome.org/extension/3843/just-perfection/'
+  # echo 'for managing podman containers in menu bar'
+  # echo 'https://extensions.gnome.org/extension/1500/containers/'
+  # echo 'https://extensions.gnome.org/extension/4135/espresso/'
+  # echo 'https://extensions.gnome.org/extension/3193/blur-my-shell/'
+  # echo 'https://extensions.gnome.org/extension/750/openweather/'
+  # echo 'https://extensions.gnome.org/extension/906/sound-output-device-chooser/'
+  # echo 'https://extensions.gnome.org/extension/21/workspace-indicator/'
+  # echo 'https://extensions.gnome.org/extension/4812/wallpaper-switcher/'
+
+# keyboard bindings : unset
+  # dconf write "/org/gnome/desktop/wm/keybindings/begin-move" "@as []"
+  # dconf write "/org/gnome/desktop/wm/keybindings/begin-resize" "@as []"
+  # dconf write "/org/gnome/desktop/wm/keybindings/close" "@as []"
+  # dconf write "/org/gnome/desktop/wm/keybindings/cycle-group" "@as []"
+  # dconf write "/org/gnome/desktop/wm/keybindings/cycle-group-backward" "@as []"
+  # dconf write "/org/gnome/desktop/wm/keybindings/cycle-windows" "@as []"
+  # dconf write "/org/gnome/desktop/wm/keybindings/cycle-windows-backward" "@as []"
+  # dconf write "/org/gnome/desktop/wm/keybindings/move-to-workspace-last" "@as []"
+  # dconf write "/org/gnome/desktop/wm/keybindings/switch-input-source" "@as []"
+  # dconf write "/org/gnome/desktop/wm/keybindings/switch-input-source-backward" "@as []"
+  # dconf write "/org/gnome/desktop/wm/keybindings/switch-to-workspace-last" "@as []"
+  # dconf write "/org/gnome/shell/keybindings/focus-active-notification" "@as []"
+  # dconf write "/org/gnome/mutter/keybindings/toggle-tiled-left" "@as []"
+  # dconf write "/org/gnome/mutter/keybindings/toggle-tiled-right" "@as []"
+  # dconf write "/org/gnome/settings-daemon/plugins/media-keys/area-screenshot-clip" "@as []"
+  # dconf write "/org/gnome/settings-daemon/plugins/media-keys/logout" "@as []"
+  # dconf write "/org/gnome/settings-daemon/plugins/media-keys/magnifier" "@as []"
+  # dconf write "/org/gnome/settings-daemon/plugins/media-keys/screencast" "@as []"
+  # dconf write "/org/gnome/settings-daemon/plugins/media-keys/screenreader" "@as []"
+  # dconf write "/org/gnome/settings-daemon/plugins/media-keys/screenshot-clip" "@as []"
+  # dconf write "/org/gnome/settings-daemon/plugins/media-keys/window-screenshot-clip" "@as []"
+  # dconf write "/org/gnome/shell/extensions/pop-shell/activate-launcher" "@as []"
+  # dconf write "/org/gnome/shell/extensions/pop-shell/pop-monitor-down" "@as []"
+  # dconf write "/org/gnome/shell/extensions/pop-shell/pop-monitor-left" "@as []"
+  # dconf write "/org/gnome/shell/extensions/pop-shell/pop-monitor-right" "@as []"
+  # dconf write "/org/gnome/shell/extensions/pop-shell/pop-monitor-up" "@as []"
+  # dconf write "/org/gnome/shell/extensions/pop-shell/pop-workspace-down" "@as []"
+  # dconf write "/org/gnome/shell/extensions/pop-shell/pop-workspace-up" "@as []"
+  # dconf write "/org/gnome/shell/extensions/pop-shell/toggle-floating" "@as []"
+  # dconf write "/org/gnome/shell/extensions/pop-shell/toggle-stacking" "@as []"
+  # dconf write "/org/gnome/shell/extensions/pop-shell/toggle-stacking-global" "@as []"
+  # dconf write "/org/gnome/shell/extensions/pop-shell/toggle-tiling" "@as []"
+  
+# load gnome terminal profiles
+  # dconf load /org/gnome/terminal/legacy/profiles:/ < ./configs/gnome-terminal-profiles.dconf
+
+
+

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+  if [[ ! -f $HOME/.ssh/github.com ]]; then
+      ssh-keygen -t ed25519 -f $HOME/.ssh/github.com -C "jeff.windsor@gmail.com"
+      xdg-open https://github.com/settings/keys/ &
+  fi
+
+#  if [[ ! -f $HOME/.ssh/gitlab.gnome.org ]]; then
+#      ssh-keygen -t ed25519 -f $HOME/.ssh/gitlab.gnome.org -C "jeff.windsor+gnome@gmail.com"
+#      xdg-open https://gitlab.gnome.org/-/profile/keys/ &
+#  fi

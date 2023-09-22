@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+  cargo install cargo-update
+  sudo dnf -y install cmake && cargo install starship --version 1.10.3
+  cargo install topgrade

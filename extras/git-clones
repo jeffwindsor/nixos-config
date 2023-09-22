@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+  mkdir -p $HOME/Source
+  mkdir -p $HOME/Source/gitlab.com/
+  mkdir -p $HOME/Source/github.com/
+
+  git clone git@github.com:jeffwindsor/installs.git $HOME/Source/github.com/jeffwindsor/installs
+  git clone git@github.com:jeffwindsor/startpage.git $HOME/Source/github.com/jeffwindsor/startpage
