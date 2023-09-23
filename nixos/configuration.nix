@@ -4,7 +4,7 @@
 { inputs, outputs, lib, config, pkgs, ... }: {
 
   imports = [
-    inputs.home-manager.nixosModules.home-manager   # passed in home manager
+    ../home-manager/home.nix
     ./gnome.nix                                     # add personalized gnome de
     ./hardware-configuration.nix                    # generated hardware config
   ];
@@ -102,13 +102,6 @@
     isNormalUser = true;
     packages = with pkgs; [];
     shell = pkgs.zsh;
-  };
-
-  home-manager = {
-    extraSpecialArgs = { inherit inputs outputs; };
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    users.mid = import ../home-manager/home.nix;
   };
 
 }

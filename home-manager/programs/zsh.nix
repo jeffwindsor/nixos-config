@@ -6,7 +6,7 @@
       enable = true;
       enableCompletion = true;
       enableAutosuggestions = true;
-      syntaxHighlighting.enable = true;
+      enableSyntaxHighlighting = true;
       history = {
         expireDuplicatesFirst = true;
         ignorePatterns = [ "rm *" "pkill *" ];
