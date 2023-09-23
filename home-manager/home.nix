@@ -21,7 +21,7 @@
     # };
     packages = with pkgs; [
       brave         # backup browser
-      exa           # ls replacement
+      eza           # ls replacement
       fd            # find replacement
       fortune       # saying that make my day
       freshfetch    # neofetch replacement

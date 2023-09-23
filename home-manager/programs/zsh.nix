@@ -6,7 +6,7 @@
       enable = true;
       enableCompletion = true;
       enableAutosuggestions = true;
-      enableSyntaxHighlighting = true;
+      syntaxHighlighting.enable = true;
       history = {
         expireDuplicatesFirst = true;
         ignorePatterns = [ "rm *" "pkill *" ];
@@ -48,12 +48,12 @@
         # bat / cat
         "cat"      = "bat --style=plain";
         # exa / ls
-        "l"        = "exa -F --group-directories-first";
-        "la"       = "exa -F --group-directories-first --git --all";
-        "ll"       = "exa -lF --group-directories-first";
-        "lla"      = "exa -lF --group-directories-first --git --all";
-        "tree"     = "exa --tree --git";
-        "treea"    = "exa -lF --tree --git --all";
+        "l"        = "eza -F --group-directories-first";
+        "la"       = "eza -F --group-directories-first --git --all";
+        "ll"       = "eza -lF --group-directories-first";
+        "lla"      = "eza -lF --group-directories-first --git --all";
+        "tree"     = "eza --tree --git";
+        "treea"    = "eza -lF --tree --git --all";
         # grep / ripgrep
         "grep"     = "rg";
         "ar"       = "alias | rg";

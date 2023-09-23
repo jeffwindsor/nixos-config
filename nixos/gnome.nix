@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:{
+{ pkgs, ... }:{
 
   # Enable GDM and GNOME
   services.xserver = {
