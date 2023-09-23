@@ -33,7 +33,9 @@
     "dot"      = "cd $XDG_CONFIG_HOME";
     "config"   = "cd $XDG_CONFIG_HOME";
     "src"      = "cd $LOC_SRC";
+    "srcs"     = "exec-on-git-repos cd \$LOC_SRC";
     "hub"      = "cd $LOC_SRC/github.com";
+    "hubs"     = "exec-on-git-repos cd \$LOC_SRC/github.com";
     "jeff"     = "cd $LOC_JEFF";
     "in"       = "cd $LOC_NIXOS";
     "finb"     = "cd $LOC_JEFF/financials/gnucash/business/imports";
@@ -76,12 +78,12 @@
     # helix
     "h"        = "helix";
     # nixos
-    "change"   = "nvim -c \":args $LOC_NIXOS/nixos/configuration.nix  $LOC_NIXOS/home-manager/home.nix\"";
+    "change"   = "nvim -c \":args $LOC_NIXOS/flake.nix $LOC_NIXOS/nixos/configuration.nix  $LOC_NIXOS/home-manager/home.nix\"";
     "changea"  = "nvim -c \":args $LOC_NIXOS/**/*.nix\"";
     "clean"    = "nix-env --delete-generations +7 && nix-collect-garbage";
     "list"     = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
     "optimize" = "nix store optimise";
-    "rebuild"  = "sudo rm -rf /etc/nixos && sudo cp -fr \$LOC_NIXOS/nixos /etc && sudo cp -fr \$LOC_NIXOS/home-manager /etc/nixos && sudo nixos-rebuild switch";
+    "rebuild"  = "sudo nixos-rebuild switch --flake $LOC_NIXOS/#frame";
     "shell"    = "nix-shell --command zsh";
     "up"       = "sudo nixos-rebuild switch --upgrade";
   };
