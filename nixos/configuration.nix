@@ -4,18 +4,18 @@
 { inputs, outputs, lib, config, pkgs, ... }: {
 
   imports = [
-    inputs.home-manager.nixosModules.home-manager
-    ./gnome.nix                               # add personalized gnome de
-    ./hardware-configuration.nix              # generated hardware config
+    inputs.home-manager.nixosModules.home-manager   # passed in home manager
+    ./gnome.nix                                     # add personalized gnome de
+    ./hardware-configuration.nix                    # generated hardware config
   ];
 
   boot = {
     loader = {
-      systemd-boot.enable = true;             # EFI boot manager
-      efi.canTouchEfiVariables = true;        # installation can modify EFI boot variables
+      systemd-boot.enable = true;                   # EFI boot manager
+      efi.canTouchEfiVariables = true;              # installation can modify EFI boot variables
     };
 
-    supportedFilesystems = [ "ntfs" ];        # USB Drives might have this format
+    supportedFilesystems = [ "ntfs" ];              # USB Drives might have this format
   };
 
   environment = {
@@ -28,28 +28,26 @@
     ];
 
     systemPackages = with pkgs; [
-      # fonts
-      jetbrains-mono                          # main font
+                                                    # fonts
+      jetbrains-mono                                # main font
       lexend
       nerdfonts
 
-      # system
-      cups-brother-hll2350dw                  # home and office printer (2023)
-      fwupd                                   # firmware update service
-      tlp                                     # laptop power mgmt service
+                                                    # system
+      cups-brother-hll2350dw                        # home and office printer (2023)
+      fwupd                                         # firmware update service
+      tlp                                           # laptop power mgmt service
     ];
   };
 
-  # AUDIO: turn off default pulse audio to use pipewire
-  hardware.pulseaudio.enable = false;
+  hardware.pulseaudio.enable = false;               # AUDIO: turn off default pulse audio to use pipewire
 
   networking= {
     hostName = "frame";
-    networkmanager.enable = true;             # Wifi Manager
+    networkmanager.enable = true;                   # Wifi Manager
   };
 
-  # PACKAGES: remove unfree check
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;                # PACKAGES: remove unfree check
 
   nix = {
     settings = {
@@ -57,8 +55,7 @@
       experimental-features = [ "nix-command" "flakes" ];
     };
 
-    # GARBAGE COLLECTION: https://nixos.wiki/wiki/Storage_optimization#Automation
-    gc = {
+    gc = {                                          # GARBAGE COLLECTION: https://nixos.wiki/wiki/Storage_optimization#Automation
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 7d";
@@ -67,29 +64,24 @@
 
   programs.zsh.enable = true;
 
-  # AUDIO: used by pipewire
-  security.rtkit.enable = true;
+  security.rtkit.enable = true;                     # AUDIO: used by pipewire
 
   services = {
-    # PRINTING: service discovery on a local network
-    avahi = {
+    avahi = {                                       # PRINTING: service discovery on a local network
       enable = true;
       nssmdns = true;
-      openFirewall = true;                  # Wifi printing
+      openFirewall = true;                          # Wifi printing
     };
 
-    # FLATPAK: user installeble
-    flatpak.enable = true;
+    flatpak.enable = true;                          # FLATPAK: user installeble
 
-    # AUDIO: sound services
-    pipewire = {
+    pipewire = {                                    # AUDIO: sound services
       enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
     };
 
-    # PRINTING: standard printing services
     printing = {
       enable = true;
       drivers = [ pkgs.cups-brother-hll2350dw ];

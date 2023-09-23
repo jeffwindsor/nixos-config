@@ -1,16 +1,21 @@
-{
-  enable = true;
+{ inputs, outputs, lib, config, pkgs, ... }: {
+  programs = {
+    git = {
+      enable = true;
 
-  extraConfig = {
-    core.excludesFile = "~/.config/git/ignore";
-    pull.ff = "only";
-    init.defaultBranch = "main";
-    credential.helper = "cache";
-    url."git@github.com:".insteadOf = "https://github.com/"; };
+      extraConfig = {
+        core.excludesFile = "~/.config/git/ignore";
+        pull.ff = "only";
+        init.defaultBranch = "main";
+        credential.helper = "cache";
+        url."git@github.com:".insteadOf = "https://github.com/"; 
+      };
 
-  ignores = [ ".git" ];
+      ignores = [ ".git" ];
 
-  userName = "Jeff Windsor";
-  userEmail = "jeff.windsor@gmail.com";
+      userName = "Jeff Windsor";
+      userEmail = "jeff.windsor@gmail.com";
+    };
+  };
 }
 

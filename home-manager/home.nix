@@ -1,7 +1,17 @@
 # TODO Split out Program configs into separate files?
-{ inputs, lib, config, pkgs, ... }: {
+{ inputs, outputs, lib, config, pkgs, ... }: {
 
-# home manager configuration
+  imports = [
+    ./programs/alacritty.nix
+    ./programs/git.nix
+    ./programs/helix.nix
+    ./programs/neovim.nix
+    ./programs/starship.nix
+    ./programs/tealdeer.nix
+    ./programs/zsh.nix
+  ];
+
+  # home manager configuration
   home = {
     username = "mid";
     homeDirectory = "/home/mid";
@@ -17,32 +27,23 @@
       freshfetch    # neofetch replacement
       gcc           # c compiler, required for nvim+treesitter
       megasync      # cloud storage
-      # neovim        # editor (vim like)
       ripgrep       # grep replacement
       sd            # sed replacement
       xh            # curl replacement
       xplr          # tui file explorer
-      # yadm          # dotfile management
     ];
     stateVersion = "23.05";
   };
 
   # programs with declaritive dotfiles/configs
   programs = {
-    alacritty       = import ./programs/alacritty.nix;
     bat             = { enable = true; config.theme = "Nord"; };
     chromium.enable = true;
     # dconf           = import ./programs/dconf.nix;
     firefox.enable  = true;
     fzf             = { enable = true; enableZshIntegration = true; };
-    git             = import ./programs/git.nix;
-    helix           = import ./programs/helix.nix;
     lazygit.enable  = true;
-    neovim          = import ./programs/neovim.nix { config=config; pkgs=pkgs; };
     nushell.enable  = true;
-    starship        = import ./programs/starship.nix;
-    tealdeer        = import ./programs/tealdeer.nix;
     zellij.enable   = true;
-    zsh             = import ./programs/zsh.nix;
   };
 }
