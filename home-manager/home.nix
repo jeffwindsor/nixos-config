@@ -15,10 +15,6 @@
   home = {
     username = "mid";
     homeDirectory = "/home/mid";
-    # manual = {
-    #   html.enable = true;
-    #   manpages.enable = true;
-    # };
     packages = with pkgs; [
       brave         # backup browser
       eza           # ls replacement
