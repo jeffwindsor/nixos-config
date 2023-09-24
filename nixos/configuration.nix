@@ -1,5 +1,5 @@
 # TODO separate out variables and pass to other files
-# like user name 'mid'
+# like username 'mid', current version
 
 { inputs, outputs, lib, config, pkgs, ... }: {
 
@@ -19,21 +19,18 @@
   };
 
   environment = {
-    pathsToLink = [ "/share/zsh" ];
+    pathsToLink = [ "/share/zsh" ];                 # ZSH
 
     shells = with pkgs; [
       bash
       nushell
-      zsh
+      zsh                                           # ZSH
     ];
 
     systemPackages = with pkgs; [
-                                                    # fonts
       jetbrains-mono                                # main font
       lexend
       nerdfonts
-
-                                                    # system
       cups-brother-hll2350dw                        # home and office printer (2023)
       fwupd                                         # firmware update service
       tlp                                           # laptop power mgmt service
@@ -62,7 +59,7 @@
     };
   };
 
-  programs.zsh.enable = true;
+  programs.zsh.enable = true;                       # ZSH
 
   security.rtkit.enable = true;                     # AUDIO: used by pipewire
 
