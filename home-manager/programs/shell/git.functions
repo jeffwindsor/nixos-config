@@ -1,6 +1,6 @@
 # git commit with a default comment of 'Refactor'
 function git-commit(){
-  git commit -m "''${1:-'Refactor'}"
+  git commit -m "${1:-Refactor}"
 }
 function git-add-commit(){
   git add --all && git-commit "$1"
@@ -10,7 +10,7 @@ function git-add-commit-push(){
 }
 # pretty git log using format set in .zshenv: GIT_LOG_PRETTY_FORMAT. Max count defaults to 10
 function git-log-graph(){
-  git log --graph --pretty=format:"''${GIT_LOG_PRETTY_FORMAT}" --abbrev-commit --max-count="''${1:-10}"
+  git log --graph --pretty=format:"${GIT_LOG_PRETTY_FORMAT}" --abbrev-commit --max-count="${1:-10}"
 }
 # find all directories ending in .git (including hidden and ignored listings)
 function git-find-dirs(){

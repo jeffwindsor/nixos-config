@@ -56,7 +56,7 @@
           LOC_JEFF              = "$HOME/Source/github.com/jeffwindsor";
           LOC_NIXOS             = "$HOME/Source/github.com/jeffwindsor/nixos-config";
           GIT_LOG_PRETTY_FORMAT = "%C(green)%h%C(auto)%d%C(reset) - %s | %C(cyan)%an %C(dim)%cr%C(reset)";
-          RIPGREP_CONFIG_PATH   = "$XDG_CONFIG_HOME/ripgrep/ripgreprc";
+          NIX_SYSTEM_PROFILE    = "-- profile /nix/var/nix/profiles/system";
         };
 
         shellAliases = {
@@ -93,7 +93,6 @@
           "f"        = "freshfetch";
           # git
           "lg"       = "lazygit";
-          "gui"      = "lazygit";
           "ga"       = "git add";
           "gaa"      = "git add -u";
           "gb"       = "git branch -v";
@@ -112,14 +111,13 @@
           # helix
           "h"        = "helix";
           # nixos
-          "change"   = "nvim -c \":args $LOC_NIXOS/flake.nix $LOC_NIXOS/nixos/configuration.nix  $LOC_NIXOS/home-manager/home.nix\"";
-          "changea"  = "nvim -c \":args $LOC_NIXOS/**/*.nix\"";
-          "clean"    = "nix-env --delete-generations +7 && nix-collect-garbage";
-          "list"     = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
-          "optimize" = "nix store optimise";
+          "change"   = "cd $LOC_NIXOS && nvim -c \":args $LOC_NIXOS/flake.nix $LOC_NIXOS/nixos/configuration.nix  $LOC_NIXOS/home-manager/home.nix\"";
+          "changea"  = "cd $LOC_NIXOS && nvim -c \":args $LOC_NIXOS/**/*.nix\"";
+          "clean"    = "nix-env --delete-generations +7 && nix-collect-garbage && nix store optimise";
+          "list"     = "sudo nix-env --list-generations $NIX_SYSTEM_PROFILE";
           "rebuild"  = "sudo nixos-rebuild switch --flake $LOC_NIXOS/#frame";
+          "rebuildu" = "sudo nixos-rebuild switch --upgrade --flake $LOC_NIXOS/#frame";
           "shell"    = "nix-shell --command zsh";
-          "up"       = "sudo nixos-rebuild switch --upgrade";
         };
 
         stateVersion = "23.05";
