@@ -6,6 +6,12 @@
     neovim = {
       enable = true;
       defaultEditor = true;
+      extraPackages with pkgs;  [
+          wl-clipboard                # manages terminal to clipboard copies (wayland)
+          xclip                       # manages terminal to clipboard copies (xorg)
+
+          # maybe some lsps???
+      ];
       plugins = with pkgs.vimPlugins; [
         auto-save-nvim                # https://github.com/pocco81/auto-save.nvim/
         gitsigns-nvim                 # https://github.com/lewis6991/gitsigns.nvim/

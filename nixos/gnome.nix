@@ -17,7 +17,6 @@
     # preferred packages
     gnome-extension-manager             # improved extension manager
     gnome-firmware                      # firmware application
-    xclip                               # manages terminal to clipboard copies
     gnome.gnome-terminal                # simple backup terminal
     gnome.seahorse                      # manage encryption keys and passwords in the GnomeKeyring
 
