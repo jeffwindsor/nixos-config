@@ -112,8 +112,9 @@
           # helix
           "h"        = "helix";
           # nixos
-          "change"   = "cd $LOC_NIXOS && nvim -c \":args $LOC_NIXOS/flake.nix $LOC_NIXOS/nixos/configuration.nix  $LOC_NIXOS/home-manager/home.nix\"";
-          "changea"  = "cd $LOC_NIXOS && nvim -c \":args $LOC_NIXOS/**/*.nix\"";
+          "change"   = "cd $LOC_NIXOS && nvim -c \":args flake.nix ./nixos/configuration.nix  ./home-manager/home.nix\"";
+          "changea"  = "cd $LOC_NIXOS && nvim -c \":args ./**/*.nix\"";
+          "home"     = "cd $LOC_NIXOS/home-manager && nvim -c \":args ./**/*.nix\"";
           "clean"    = "nix-env --delete-generations +7 && nix-collect-garbage && nix store optimise";
           "list"     = "sudo nix-env --list-generations $NIX_SYSTEM_PROFILE";
           "rebuild"  = "sudo nixos-rebuild switch --flake $LOC_NIXOS/#frame";
