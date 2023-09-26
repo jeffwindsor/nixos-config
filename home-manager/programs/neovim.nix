@@ -6,7 +6,7 @@
     neovim = {
       enable = true;
       defaultEditor = true;
-      extraPackages with pkgs;  [
+      extraPackages = with pkgs;  [
           wl-clipboard                # manages terminal to clipboard copies (wayland)
           xclip                       # manages terminal to clipboard copies (xorg)
 
