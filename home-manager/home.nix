@@ -13,6 +13,7 @@
         ./programs/bash.nix
         ./programs/git.nix
         ./programs/helix.nix
+        ./programs/lf.nix
         ./programs/neovim.nix
         ./programs/starship.nix
         ./programs/tealdeer.nix
