@@ -57,7 +57,7 @@
           LOC_JEFF              = "$HOME/Source/github.com/jeffwindsor";
           LOC_NIXOS             = "$HOME/Source/github.com/jeffwindsor/nixos-config";
           GIT_LOG_PRETTY_FORMAT = "%C(green)%h%C(auto)%d%C(reset) - %s | %C(cyan)%an %C(dim)%cr%C(reset)";
-          NIX_SYSTEM_PROFILE    = "-- profile /nix/var/nix/profiles/system";
+          NIX_SYSTEM_PROFILE    = "--profile /nix/var/nix/profiles/system";
         };
 
         shellAliases = {
