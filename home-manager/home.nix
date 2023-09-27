@@ -57,7 +57,6 @@
           LOC_JEFF              = "$HOME/Source/github.com/jeffwindsor";
           LOC_NIXOS             = "$HOME/Source/github.com/jeffwindsor/nixos-config";
           GIT_LOG_PRETTY_FORMAT = "%C(green)%h%C(auto)%d%C(reset) - %s | %C(cyan)%an %C(dim)%cr%C(reset)";
-          NIX_SYSTEM_PROFILE    = "--profile /nix/var/nix/profiles/system";
         };
 
         shellAliases = {
@@ -116,7 +115,7 @@
           "changea"  = "cd $LOC_NIXOS && nvim -c \":args ./**/*.nix\"";
           "home"     = "cd $LOC_NIXOS/home-manager && nvim -c \":args ./**/*.nix\"";
           "clean"    = "nix-env --delete-generations +7 && nix-collect-garbage && nix store optimise";
-          "list"     = "sudo nix-env --list-generations $NIX_SYSTEM_PROFILE";
+          "list"     = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
           "rebuild"  = "sudo nixos-rebuild switch --flake $LOC_NIXOS/#frame";
           "rebuildu" = "sudo nixos-rebuild switch --upgrade --flake $LOC_NIXOS/#frame";
           "shell"    = "nix-shell --command zsh";
