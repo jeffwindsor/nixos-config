@@ -1,4 +1,4 @@
-{ ... }: {
+{ config, ... }: {
    programs.alacritty = {
     enable = true;
     settings = {
@@ -18,33 +18,30 @@
         size = 12;
       };
 
-      colors = {
-        # TENDER Default colors
+      colors = with config.colorScheme.colors; {
         primary = {
-          background = "#282828";
-          foreground = "#eeeeee";
+          background = "#${base00}";
+          foreground = "#${base05}";
         };
-        # TENDER Normal colors
         normal = {
-          black =   "#282828";
-          red =     "#f43753";
-          green =   "#c9d05c";
-          yellow =  "#ffc24b";
-          blue =    "#b3deef";
-          magenta = "#d3b987";
-          cyan =    "#73cef4";
-          white =   "#eeeeee";
+          black =   "#${base00}";
+          blue =    "#${base0D}";
+          cyan =    "#${base0C}";
+          green =   "#${base0B}";
+          magenta = "#${base0E}";
+          red =     "#${base08}";
+          white =   "#${base05}";
+          yellow =  "#${base0A}";
         };
-        # TENDER Bright colors
         bright = {
-          black =   "#4c4c4c";
-          red =     "#f43753";
-          green =   "#c9d05c";
-          yellow =  "#ffc24b";
-          blue =    "#b3deef";
-          magenta = "#d3b987";
-          cyan =    "#73cef4";
-          white =   "#feffff";
+          black =   "#${base03}";
+          blue =    "#${base0D}";
+          cyan =    "#${base0C}";
+          green =   "#${base0B}";
+          magenta = "#${base0E}";
+          red =     "#${base08}";
+          white =   "#${base07}";
+          yellow =  "#${base0A}";
         };
       };
     };

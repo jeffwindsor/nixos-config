@@ -1,7 +1,6 @@
-# TODO : Pass in the user name mid?
-
 { inputs, outputs, pkgs, ... }: {
   imports = [
+    inputs.nix-colors.homeManagerModules.default
     ./programs/alacritty.nix
     ./programs/bash.nix
     ./programs/git.nix
@@ -12,6 +11,9 @@
     ./programs/tealdeer.nix
     ./programs/zsh.nix
   ];
+
+  # https://github.com/tinted-theming/base16-schemes
+  colorScheme = inputs.nix-colors.colorSchemes.tender;
 
   programs = {
     bat             = { enable = true; config.theme = "Nord"; };
@@ -34,6 +36,7 @@
       fortune       # saying that make my day
       freshfetch    # neofetch replacement
       gcc           # c compiler, required for nvim+treesitter
+      jq            # json tool
       megasync      # cloud storage
       ripgrep       # grep replacement
       sd            # sed replacement
