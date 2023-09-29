@@ -1,66 +1,48 @@
-# look at
-#   https://github.com/NixNeovim/NixNeovimPlugins
-#   https://gist.github.com/nat-418/d76586da7a5d113ab90578ed56069509
-{ pkgs, ... }:
-# let
-#    fromGitHub = ref: repo: pkgs.vimUtils.buildVimPluginFrom2Nix {
-#     pname = "${lib.strings.sanitizeDerivationName repo}";
-#     version = ref;
-#     src = builtins.fetchGit {
-#       url = "https://github.com/${repo}.git";
-#       ref = ref;
-#     };
-#   };
-# in
-{
+{ pkgs, ... }: {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
     extraPackages = with pkgs;  [
-        wl-clipboard                # manages terminal to clipboard copies (wayland)
-        xclip                       # manages terminal to clipboard copies (xorg)
-
-        # maybe some lsps???
+        wl-clipboard
+        xclip
     ];
     plugins = with pkgs.vimPlugins; [
-      auto-save-nvim                # https://github.com/pocco81/auto-save.nvim/
-      # (fromGitHub "HEAD" "elihunter173/dirbuf.nvim")
-      gitsigns-nvim                 # https://github.com/lewis6991/gitsigns.nvim/
+      auto-save-nvim
+      gitsigns-nvim
       {
         plugin = indent-blankline-nvim;
         type   = "lua";
         config = builtins.readFile(./neovim/plugins/indent-blankline-nvim.lua);
       }
       {
-        plugin = mini-nvim;         # https://github.com/echasnovski/mini.nvim/
+        plugin = mini-nvim;
         type   = "lua";
         config = builtins.readFile(./neovim/plugins/mini-nvim.lua);
       }
-      # {
-      #   plugin = nvim-cmp;          # https://github.com/hrsh7th/nvim-cmp/
-      #   type   = "lua";
-      #   config = builtins.readFile(./neovim/plugins/nvim-cmp.lua);
-      # }
-      # {
-      #   plugin = nvim-lspconfig;    # https://github.com/neovim/nvim-lspconfig/
-      #   type   = "lua";
-      #   config = builtins.readFile(./neovim/plugins/nvim-lspconfig.lua);
-      # }
-      # nvim-treesitter               # https://github.com/nvim-treesitter/nvim-treesitter/
       {
-        plugin = telescope-nvim;    # https://github.com/nvim-telescope/telescope.nvim/
+        plugin = nvim-cmp;
+        type   = "lua";
+        config = builtins.readFile(./neovim/plugins/nvim-cmp.lua);
+      }
+      cmp-nvim-lsp
+      luasnip
+      cmp_luasnip
+      nvim-treesitter
+      nvim-treesitter-textobjects
+      {
+        plugin = telescope-nvim;
         type   = "lua";
         config = builtins.readFile(./neovim/plugins/telescope-nvim.lua);
       }
       {
-        plugin = telescope-file-browser-nvim;    # https://github.com/nvim-telescope/telescope.nvim/
+        plugin = telescope-file-browser-nvim;
         type   = "lua";
         config = builtins.readFile(./neovim/plugins/telescope-file-browser-nvim.lua);
       }
       plenary-nvim
-      vim-sleuth                    # https://github.com/tpope/vim-sleuth/
+      vim-sleuth
       {
-        plugin = which-key-nvim;    # https://github.com/folke/which-key.nvim/
+        plugin = which-key-nvim;
         type   = "lua";
         config = builtins.readFile(./neovim/plugins/which-key-nvim.lua);
       }
