@@ -87,7 +87,8 @@
       # git
       "lg"       = "lazygit";
       "ga"       = "git add";
-      "gaa"      = "git add -u";
+      "gaa"      = "git add --all";
+      "gau"      = "git add -u";
       "gb"       = "git branch -v";
       "gc"       = "git clone";
       "gcm"      = "git-commit";
@@ -104,13 +105,13 @@
       # helix
       "h"        = "helix";
       # nixos
-      "change"   = "cd $LOC_NIXOS && nvim -c \":args flake.nix ./nixos/configuration.nix  ./home-manager/home.nix\"";
-      "changea"  = "cd $LOC_NIXOS && nvim -c \":args ./**/*.nix\"";
+      "system"   = "cd $LOC_NIXOS && nvim -c \":args flake.nix ./nixos/configuration.nix  ./home-manager/home.nix\"";
       "home"     = "cd $LOC_NIXOS/home-manager && nvim -c \":args ./**/*.nix\"";
+      "neovim"   = "cd $LOC_NIXOS/home-manager/programs && nvim -c \":args neovim.nix ./neovim/**/*\"";
       "clean"    = "nix-env --delete-generations +7 && nix-collect-garbage && nix store optimise";
       "list"     = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
       "rebuild"  = "sudo nixos-rebuild switch --flake $LOC_NIXOS/#frame";
-      "rebuildu" = "sudo nixos-rebuild switch --upgrade --flake $LOC_NIXOS/#frame";
+      "upgrade"  = "sudo nixos-rebuild switch --upgrade";
       "shell"    = "nix-shell --command zsh";
     };
 

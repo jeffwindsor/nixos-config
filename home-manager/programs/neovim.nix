@@ -1,7 +1,18 @@
 # look at
 #   https://github.com/NixNeovim/NixNeovimPlugins
 #   https://gist.github.com/nat-418/d76586da7a5d113ab90578ed56069509
-{ pkgs, ... }: {
+{ pkgs, ... }:
+# let
+#    fromGitHub = ref: repo: pkgs.vimUtils.buildVimPluginFrom2Nix {
+#     pname = "${lib.strings.sanitizeDerivationName repo}";
+#     version = ref;
+#     src = builtins.fetchGit {
+#       url = "https://github.com/${repo}.git";
+#       ref = ref;
+#     };
+#   };
+# in
+{
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -13,6 +24,7 @@
     ];
     plugins = with pkgs.vimPlugins; [
       auto-save-nvim                # https://github.com/pocco81/auto-save.nvim/
+      # (fromGitHub "HEAD" "elihunter173/dirbuf.nvim")
       gitsigns-nvim                 # https://github.com/lewis6991/gitsigns.nvim/
       {
         plugin = indent-blankline-nvim;
@@ -39,6 +51,11 @@
         plugin = telescope-nvim;    # https://github.com/nvim-telescope/telescope.nvim/
         type   = "lua";
         config = builtins.readFile(./neovim/plugins/telescope-nvim.lua);
+      }
+      {
+        plugin = telescope-file-browser-nvim;    # https://github.com/nvim-telescope/telescope.nvim/
+        type   = "lua";
+        config = builtins.readFile(./neovim/plugins/telescope-file-browser-nvim.lua);
       }
       plenary-nvim
       vim-sleuth                    # https://github.com/tpope/vim-sleuth/
