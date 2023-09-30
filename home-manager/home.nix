@@ -114,7 +114,7 @@
       "clean"    = "nix-env --delete-generations +7 && nix-collect-garbage && nix store optimise";
       "list"     = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
       "rebuild"  = "sudo nixos-rebuild switch --flake $LOC_NIXOS/#frame";
-      "upgrade"  = "sudo nixos-rebuild switch --upgrade";
+      "upgrade"  = "sudo nixos-rebuild switch --flake $LOC_NIXOS/#frame --upgrade";
       "shell"    = "nix-shell --command zsh";
     };
 
