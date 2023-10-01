@@ -11,6 +11,10 @@ vim.api.nvim_create_autocmd("TextYankPost",
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, { pattern = { "*.txt", "*.md", "*.tex" },
   command = "setlocal spell" })
 
+-- Set Comment for NIX files
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, { pattern = { "*.nix" },
+  command = 'lua vim.api.nvim_buf_set_option(0, "commentstring", "# %s")' })
+
 -- ----------------------------------------------------------------------------
 -- KEY MAPPINGS:
 --    <leader> key maps moved to WHICH KEY plugin config
