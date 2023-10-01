@@ -3,6 +3,7 @@
     inputs.nix-colors.homeManagerModules.default
     ./programs/alacritty.nix
     ./programs/bash.nix
+    ./programs/bat.nix
     ./programs/git.nix
     ./programs/helix.nix
     ./programs/lf.nix
@@ -16,7 +17,6 @@
   colorScheme = inputs.nix-colors.colorSchemes.tender;
 
   programs = {
-    bat             = { enable = true; config.theme = "Nord"; };
     chromium.enable = true;
     # dconf           = import ./programs/dconf.nix;
     firefox.enable  = true;
@@ -53,6 +53,7 @@
       LOC_JEFF              = "$HOME/Source/github.com/jeffwindsor";
       LOC_NIXOS             = "$HOME/Source/github.com/jeffwindsor/nixos-config";
       GIT_LOG_PRETTY_FORMAT = "%C(green)%h%C(auto)%d%C(reset) - %s | %C(cyan)%an %C(dim)%cr%C(reset)";
+      # MANPAGER              = "sh -c 'col -bx | bat -l man -p'";
     };
 
     shellAliases = {
@@ -108,9 +109,10 @@
       # helix
       "h"        = "helix";
       # nixos
-      "system"   = "cd $LOC_NIXOS && nvim -c \":args flake.nix ./nixos/configuration.nix  ./home-manager/home.nix\"";
+      "system"   = "cd $LOC_NIXOS && nvim -c \":args ./home-manager/home.nix ./nixos/configuration.nix flake.nix\"";
       "home"     = "cd $LOC_NIXOS/home-manager && nvim -c \":args ./**/*.nix\"";
       "neovim"   = "cd $LOC_NIXOS/home-manager/programs && nvim -c \":args neovim.nix ./neovim/**/*\"";
+      "helix"    = "cd $LOC_NIXOS/home-manager/programs && nvim -c \":args helix.nix ./helix/**/*\"";
       "clean"    = "nix-env --delete-generations +7 && nix-collect-garbage && nix store optimise";
       "list"     = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
       "rebuild"  = "sudo nixos-rebuild switch --flake $LOC_NIXOS/#frame";
