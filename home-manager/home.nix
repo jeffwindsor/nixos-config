@@ -4,6 +4,7 @@
     ./programs/alacritty.nix
     ./programs/bash.nix
     ./programs/bat.nix
+    ./programs/fzf.nix
     ./programs/git.nix
     ./programs/helix.nix
     ./programs/lf.nix
@@ -13,14 +14,28 @@
     ./programs/zsh.nix
   ];
 
-  # https://github.com/tinted-theming/base16-schemes
-  colorScheme = inputs.nix-colors.colorSchemes.tender;
+  # Nix Colors  - https://github.com/tinted-theming/base16-schemes
+  #               https://tinted-theming.github.io/base16-gallery/
+  colorScheme = with inputs.nix-colors.colorSchemes;
+    decaf;                   # dark
+    # woodland;                # dark-brown
+    # nova;                    # blue-grey
 
+    #-- others --------------------------------
+    # atlas;                   # dark
+    # materia;                 # dark
+    # equilibrium-dark;        # dark 
+    # gruvbox-dark-hard;       # dark
+    # gruvbox-light-hard;      # light
+    # hardcore;                # dark
+    # danqing;                 # dark
+    # tender;                  # dark
+    # tomorrow;                # light
+    # ayu-mirage;              # dark
+  
   programs = {
     chromium.enable = true;
-    # dconf           = import ./programs/dconf.nix;
     firefox.enable  = true;
-    fzf             = { enable = true; enableBashIntegration = true; enableZshIntegration = true; };
     lazygit.enable  = true;
     nushell.enable  = true;
     zellij.enable   = true;

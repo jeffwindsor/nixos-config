@@ -35,7 +35,7 @@
         };
       };
 
-      keys = {
+     keys = {
         insert.esc = ["collapse_selection" "normal_mode"];
         normal = {
           C-h = "select_prev_sibling";
