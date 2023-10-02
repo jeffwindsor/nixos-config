@@ -135,7 +135,7 @@
       # helix
       "h"        = "helix";
       # nixos
-      "system"   = "cd $LOC_NIXOS && nvim -c \":args ./home-manager/home.nix ./nixos/configuration.nix flake.nix\"";
+      "system"   = "cd $LOC_NIXOS && nvim -c \":args ./home-manager/home.nix ./nixos/configuration.nix ./nixos/gnome.nix flake.nix\"";
       "home"     = "cd $LOC_NIXOS/home-manager && nvim -c \":args ./**/*.nix\"";
       "neovim"   = "cd $LOC_NIXOS/home-manager/programs && nvim -c \":args neovim.nix ./neovim/**/*\"";
       "helix"    = "cd $LOC_NIXOS/home-manager/programs && nvim -c \":args helix.nix ./helix/**/*\"";
