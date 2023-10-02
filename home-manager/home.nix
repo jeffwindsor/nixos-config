@@ -1,4 +1,9 @@
 { inputs, outputs, pkgs, ... }: {
+  colorScheme = with inputs.nix-colors.colorSchemes;
+    decaf;    # decaf; woodland; nova;
+    # Nix Colors | https://github.com/tinted-theming/base16-schemes | https://tinted-theming.github.io/base16-gallery/
+    # Others | atlas; materia; equilibrium-dark; gruvbox-dark-hard; gruvbox-light-hard; hardcore; danqing; tender; tomorrow; ayu-mirage;
+
   imports = [
     inputs.nix-colors.homeManagerModules.default
     ./programs/alacritty.nix
@@ -14,25 +19,6 @@
     ./programs/zsh.nix
   ];
 
-  # Nix Colors  - https://github.com/tinted-theming/base16-schemes
-  #               https://tinted-theming.github.io/base16-gallery/
-  colorScheme = with inputs.nix-colors.colorSchemes;
-    decaf;                   # dark
-    # woodland;                # dark-brown
-    # nova;                    # blue-grey
-
-    #-- others --------------------------------
-    # atlas;                   # dark
-    # materia;                 # dark
-    # equilibrium-dark;        # dark 
-    # gruvbox-dark-hard;       # dark
-    # gruvbox-light-hard;      # light
-    # hardcore;                # dark
-    # danqing;                 # dark
-    # tender;                  # dark
-    # tomorrow;                # light
-    # ayu-mirage;              # dark
-  
   programs = {
     chromium.enable = true;
     firefox.enable  = true;
@@ -79,7 +65,6 @@
       LOC_JEFF              = "$HOME/Source/github.com/jeffwindsor";
       LOC_NIXOS             = "$HOME/Source/github.com/jeffwindsor/nixos-config";
       GIT_LOG_PRETTY_FORMAT = "%C(green)%h%C(auto)%d%C(reset) - %s | %C(cyan)%an %C(dim)%cr%C(reset)";
-      # MANPAGER              = "sh -c 'col -bx | bat -l man -p'";
     };
 
     shellAliases = {
@@ -144,6 +129,10 @@
       "rebuild"  = "sudo nixos-rebuild switch --flake $LOC_NIXOS/#frame";
       "upgrade"  = "sudo nixos-rebuild switch --flake $LOC_NIXOS/#frame --upgrade";
       "shell"    = "nix-shell --command zsh";
+      # zellij
+      "z"        = "zellij"
+      "zs"       = "zellij --session"
+      "zl"       = "zellij --layout"
     };
 
     stateVersion = "23.05";
