@@ -130,9 +130,9 @@
       "upgrade"  = "sudo nixos-rebuild switch --flake $LOC_NIXOS/#frame --upgrade";
       "shell"    = "nix-shell --command zsh";
       # zellij
-      "z"        = "zellij"
-      "zs"       = "zellij --session"
-      "zl"       = "zellij --layout"
+      "z"        = "zellij";
+      "zs"       = "zellij --session";
+      "zl"       = "zellij --layout";
     };
 
     stateVersion = "23.05";
