@@ -45,12 +45,23 @@
     username = "mid";
     homeDirectory = "/home/mid";
     packages = with pkgs; [
+      popsicle      # usb flasher
+      spotify       # music player
+      transmission  # bit torrent
+      obsidian      # notes
+      vlc           # video player
+      thunderbird   # mail
+      libreoffice   # office
+
       brave         # backup browser
       exa           # ls replacement
       fd            # find replacement
       fortune       # saying that make my day
       freshfetch    # neofetch replacement
       gcc           # c compiler, required for nvim+treesitter
+      hledger
+      hledger-ui
+      hledger-web
       jq            # json tool
       megasync      # cloud storage
       ripgrep       # grep replacement
@@ -128,7 +139,7 @@
       "home"     = "cd $LOC_NIXOS/home-manager && nvim -c \":args ./**/*.nix\"";
       "neovim"   = "cd $LOC_NIXOS/home-manager/programs && nvim -c \":args neovim.nix ./neovim/**/*\"";
       "helix"    = "cd $LOC_NIXOS/home-manager/programs && nvim -c \":args helix.nix ./helix/**/*\"";
-      "clean"    = "nix-env --delete-generations +7 && nix-collect-garbage && nix store optimise";
+      "clean"    = "nix-env --delete-generations +7 && nix-collect-garbage && nix store optimise && flatpak uninstall --unused -y";
       "list"     = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
       "rebuild"  = "sudo nixos-rebuild switch --flake $LOC_NIXOS/#frame";
       "upgrade"  = "sudo nixos-rebuild switch --flake $LOC_NIXOS/#frame --upgrade";
