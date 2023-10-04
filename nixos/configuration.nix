@@ -42,6 +42,7 @@
   networking= {
     hostName = "frame";
     networkmanager.enable = true;                   # Wifi Manager
+    firewall.enable = true;
   };
 
   nixpkgs.config.allowUnfree = true;                # PACKAGES: remove unfree check
