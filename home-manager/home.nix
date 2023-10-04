@@ -26,20 +26,19 @@
     firefox.enable  = true;
     lazygit.enable  = true;
     nushell.enable  = true;
-    zellij.enable   = true;
   };
 
   home = {
     username = "mid";
     homeDirectory = "/home/mid";
     packages = with pkgs; [
+      libreoffice   # office
+      obsidian      # notes
       popsicle      # usb flasher
       spotify       # music player
-      transmission  # bit torrent
-      obsidian      # notes
-      vlc           # video player
       thunderbird   # mail
-      libreoffice   # office
+      transmission  # bit torrent
+      vlc           # video player
 
       brave         # backup browser
       exa           # ls replacement

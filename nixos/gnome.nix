@@ -1,16 +1,8 @@
 { pkgs, ... }:{
 
-  # Enable GDM and GNOME
-  services.xserver = {
-    enable = true;
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
-    layout = "us";
-    xkbVariant = "";
-  };
-
-  # Add the games pack
-  services.gnome.games.enable = true;
+  # imports = [
+  #   ./gnome/extensions/forge.nix  
+  # ]
 
   # Add packages
   environment.systemPackages = (with pkgs; [
@@ -52,6 +44,20 @@
     # gnome.gnome-contacts
   ]);
 
-  services.xserver.desktopManager.xterm.enable = false;    # required to remove xterm
+  # Add the games pack
+  services.gnome.games.enable = true;
+  
+
+  # Enable GDM and GNOME
+  services.xserver = {
+    enable = true;
+    displayManager.gdm.enable = true;
+    desktopManager = {
+      gnome.enable = true;
+      xterm.enable = false;    # Required to remove xterm
+    };
+    layout = "us";
+    xkbVariant = "";
+  };
 
 }

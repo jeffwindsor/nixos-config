@@ -5,7 +5,6 @@
 
   imports = [
     inputs.home-manager.nixosModules.home-manager
-    # ../home-manager/home.nix
     ./gnome.nix                                     # add personalized gnome de
     ./hardware-configuration.nix                    # generated hardware config
   ];
