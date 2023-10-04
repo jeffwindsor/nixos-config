@@ -9,6 +9,7 @@
     ./programs/alacritty.nix
     ./programs/bash.nix
     ./programs/bat.nix
+    ./programs/dconf.nix
     ./programs/fzf.nix
     ./programs/git.nix
     ./programs/helix.nix
@@ -138,6 +139,8 @@
 
     stateVersion = "23.05";
   };
+
+  
 }
 
 
