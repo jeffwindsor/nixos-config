@@ -16,6 +16,7 @@
     ./programs/neovim.nix
     ./programs/starship.nix
     ./programs/tealdeer.nix
+    ./programs/zellij.nix
     ./programs/zsh.nix
   ];
 
