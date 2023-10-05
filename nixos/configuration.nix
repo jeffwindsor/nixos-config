@@ -4,6 +4,7 @@
 { inputs, outputs, lib, config, pkgs, ... }: {
 
   imports = [
+    ./hyprland.nix
     inputs.home-manager.nixosModules.home-manager
     ./gnome.nix                                     # add personalized gnome de
     ./hardware-configuration.nix                    # generated hardware config
