@@ -1,30 +1,29 @@
-{ inputs, outputs, pkgs, build, ... }: {
+{ inputs, outputs, pkgs, config, build, ... }: {
+
+  # Nix Colors | https://github.com/tinted-theming/base16-schemes | https://tinted-theming.github.io/base16-gallery/
   colorScheme = with inputs.nix-colors.colorSchemes;
     decaf;    # decaf; woodland; nova;
-    # Nix Colors | https://github.com/tinted-theming/base16-schemes | https://tinted-theming.github.io/base16-gallery/
     # Others | atlas; materia; equilibrium-dark; gruvbox-dark-hard; gruvbox-light-hard; hardcore; danqing; tender; tomorrow; ayu-mirage;
 
-  imports = [
-    # home manager modules
-    inputs.nix-colors.homeManagerModules.default
-    
-    # programs with managed configuration
-    ./programs/alacritty.nix
-    ./programs/bash.nix
-    ./programs/bat.nix
+  imports = [ 
+    inputs.nix-colors.homeManagerModules.default 
     ./programs/dconf.nix
-    ./programs/fzf.nix
-    ./programs/git.nix
-    ./programs/helix.nix
-    ./programs/lf.nix
-    ./programs/neovim.nix
-    ./programs/starship.nix
-    ./programs/tealdeer.nix
-    ./programs/zellij.nix
-    ./programs/zsh.nix
   ];
-
+  
+  # programs with managed configuration
   programs = {
+    alacritty       = import ./programs/alacritty.nix { config = config; };
+    bash            = import ./programs/bash.nix;
+    bat             = import ./programs/bat.nix { pkgs = pkgs; };
+    fzf             = import ./programs/fzf.nix;
+    git             = import ./programs/git.nix;
+    helix           = import ./programs/helix.nix;
+    lf              = import ./programs/lf.nix;
+    neovim          = import ./programs/neovim.nix { config = config; pkgs = pkgs; };
+    starship        = import ./programs/starship.nix;
+    tealdeer        = import ./programs/tealdeer.nix;
+    zellij          = import ./programs/zellij.nix { config = config; };
+    zsh             = import ./programs/zsh.nix;
     chromium.enable = true;
     firefox.enable  = true;
     lazygit.enable  = true;
@@ -32,7 +31,6 @@
   };
 
   home = {
-    username = "${build.user}";
     homeDirectory = "/home/${build.user}";
     packages = with pkgs; [
       brave         # backup browser
@@ -140,6 +138,7 @@
     };
 
     stateVersion = "${build.stateVersion}";
+    username = "${build.user}";
   };
 
   

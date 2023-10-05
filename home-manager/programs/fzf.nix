@@ -1,7 +1,5 @@
-{ ... }: {
-  programs.fzf = {
-    enable = true;
-    enableBashIntegration = true; 
-    enableZshIntegration = true; 
-  };
+{
+  enable = true;
+  enableBashIntegration = true; 
+  enableZshIntegration = true; 
 }

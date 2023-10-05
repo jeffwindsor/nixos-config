@@ -1,5 +1,4 @@
-{ config, ... }: {
-   programs.alacritty = {
+{ config }: {
     enable = true;
     settings = {
       
@@ -45,5 +44,4 @@
       };
       draw_bold_text_with_bright_colors = false;
     };
-  };
 }

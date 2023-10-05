@@ -1,7 +1,5 @@
-{ ... }: {
-  programs.bash = {
-    enable = true;
-    enableCompletion = true;
-    initExtra = builtins.readFile ./shell/git.functions;
-  };
+{
+  enable = true;
+  enableCompletion = true;
+  initExtra = builtins.readFile ./shell/git.functions;
 }
