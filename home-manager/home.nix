@@ -1,4 +1,4 @@
-{ inputs, outputs, pkgs, ... }: {
+{ inputs, outputs, pkgs, build, ... }: {
   colorScheme = with inputs.nix-colors.colorSchemes;
     decaf;    # decaf; woodland; nova;
     # Nix Colors | https://github.com/tinted-theming/base16-schemes | https://tinted-theming.github.io/base16-gallery/
@@ -29,8 +29,8 @@
   };
 
   home = {
-    username = "mid";
-    homeDirectory = "/home/mid";
+    username = "${build.user}";
+    homeDirectory = "/home/${build.user}";
     packages = with pkgs; [
       libreoffice   # office
       obsidian      # notes
@@ -136,7 +136,7 @@
       "zl"       = "zellij --layout";
     };
 
-    stateVersion = "23.05";
+    stateVersion = "${build.stateVersion}";
   };
 
   

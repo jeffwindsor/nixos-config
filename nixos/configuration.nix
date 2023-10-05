@@ -1,10 +1,10 @@
 # TODO separate out variables and pass to other files
 # like username 'mid', current version
 
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{ inputs, outputs, lib, config, pkgs, build, ... }: {
 
   imports = [
-    ./hyprland.nix
+    # ./hyprland.nix
     inputs.home-manager.nixosModules.home-manager
     ./gnome.nix                                     # add personalized gnome de
     ./hardware-configuration.nix                    # generated hardware config
@@ -41,7 +41,7 @@
   hardware.pulseaudio.enable = false;               # AUDIO: turn off default pulse audio to use pipewire
 
   networking= {
-    hostName = "frame";
+    hostName = "${build.hostname}";
     networkmanager.enable = true;                   # Wifi Manager
     firewall.enable = true;
   };
@@ -50,14 +50,14 @@
 
   nix = {
     settings = {
-      auto-optimise-store = true;
+      auto-optimise-store   = true;
       experimental-features = [ "nix-command" "flakes" ];
     };
 
     gc = {                                          # GARBAGE COLLECTION: https://nixos.wiki/wiki/Storage_optimization#Automation
       automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
+      dates     = "weekly";
+      options   = "--delete-older-than 7d";
     };
   };
 
@@ -67,18 +67,18 @@
 
   services = {
     avahi = {                                       # PRINTING: service discovery on a local network
-      enable = true;
-      nssmdns = true;
+      enable       = true;
+      nssmdns      = true;
       openFirewall = true;                          # Wifi printing
     };
 
     flatpak.enable = true;                          # FLATPAK: user installeble
 
     pipewire = {                                    # AUDIO: sound services
-      enable = true;
-      alsa.enable = true;
+      enable            = true;
+      alsa.enable       = true;
       alsa.support32Bit = true;
-      pulse.enable = true;
+      pulse.enable      = true;
     };
 
     printing = {
@@ -90,23 +90,23 @@
 
   system = {
     autoUpgrade.enable = true;
-    stateVersion = "23.05";
+    stateVersion       = "${build.stateVersion}";
   };
 
-  time.timeZone = "America/Los_Angeles";
+  time.timeZone = "${build.timeZone}";
 
-  users.users.mid = {
-    description = "The Middle Way";
-    extraGroups = [ "networkmanager" "wheel" ];
+  users.users.${build.user} = {
+    description  = "${build.userDescription}";
+    extraGroups  = [ "networkmanager" "wheel" ];
     isNormalUser = true;
-    packages = with pkgs; [];
-    shell = pkgs.zsh;
+    packages     = with pkgs; [];
+    shell        = pkgs.zsh;
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs outputs; };
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    users.mid = import ../home-manager/home.nix;
+    extraSpecialArgs    = { inherit inputs outputs build; };
+    useGlobalPkgs       = true;
+    useUserPackages     = true;
+    users.${build.user} = import ../home-manager/home.nix;
   };
 }
