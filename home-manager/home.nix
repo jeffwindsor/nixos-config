@@ -5,7 +5,10 @@
     # Others | atlas; materia; equilibrium-dark; gruvbox-dark-hard; gruvbox-light-hard; hardcore; danqing; tender; tomorrow; ayu-mirage;
 
   imports = [
+    # home manager modules
     inputs.nix-colors.homeManagerModules.default
+    
+    # programs with managed configuration
     ./programs/alacritty.nix
     ./programs/bash.nix
     ./programs/bat.nix
@@ -32,7 +35,9 @@
     username = "${build.user}";
     homeDirectory = "/home/${build.user}";
     packages = with pkgs; [
+      brave         # backup browser
       libreoffice   # office
+      megasync      # cloud storage
       obsidian      # notes
       popsicle      # usb flasher
       spotify       # music player
@@ -40,7 +45,6 @@
       transmission  # bit torrent
       vlc           # video player
 
-      brave         # backup browser
       exa           # ls replacement
       fd            # find replacement
       fortune       # saying that make my day
@@ -50,7 +54,6 @@
       hledger-ui
       hledger-web
       jq            # json tool
-      megasync      # cloud storage
       ripgrep       # grep replacement
       sd            # sed replacement
       xh            # curl replacement
@@ -84,8 +87,6 @@
       "finb"     = "cd $LOC_JEFF/financials/gnucash/business/imports";
       "finh"     = "cd $LOC_JEFF/financials/gnucash/home/imports";
       "md"       = "cd $HOME/portable/exocortex/markdown";
-      # nvim
-      "v"        = "nvim";
       # bat / cat
       "cat"      = "bat --style=plain";
       # exa / ls
@@ -120,6 +121,8 @@
       "gup"      = "git-add-commit-push";
       # helix
       "h"        = "helix";
+      # nvim
+      "v"        = "nvim";
       # nixos
       "system"   = "cd $LOC_NIXOS && nvim -c \":args ./home-manager/home.nix ./nixos/configuration.nix ./nixos/gnome.nix flake.nix\"";
       "home"     = "cd $LOC_NIXOS/home-manager && nvim -c \":args ./**/*.nix\"";

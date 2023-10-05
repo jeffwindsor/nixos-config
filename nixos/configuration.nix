@@ -12,7 +12,7 @@
 
   boot = {
     loader = {
-      systemd-boot.enable = true;                   # EFI boot manager
+      systemd-boot.enable      = true;              # EFI boot manager
       efi.canTouchEfiVariables = true;              # installation can modify EFI boot variables
     };
 
@@ -29,21 +29,24 @@
     ];
 
     systemPackages = with pkgs; [
-      jetbrains-mono                                # main font
-      lexend
-      nerdfonts
       cups-brother-hll2350dw                        # home and office printer (2023)
       fwupd                                         # firmware update service
       tlp                                           # laptop power mgmt service
     ];
   };
 
+  fonts.fonts = with pkgs; [
+    jetbrains-mono
+    lexend
+    nerdfonts
+  ];
+
   hardware.pulseaudio.enable = false;               # AUDIO: turn off default pulse audio to use pipewire
 
   networking= {
-    hostName = "${build.hostname}";
+    hostName              = "${build.hostname}";
     networkmanager.enable = true;                   # Wifi Manager
-    firewall.enable = true;
+    firewall.enable       = true;
   };
 
   nixpkgs.config.allowUnfree = true;                # PACKAGES: remove unfree check
@@ -82,7 +85,7 @@
     };
 
     printing = {
-      enable = true;
+      enable  = true;
       drivers = [ pkgs.cups-brother-hll2350dw ];
     };
 
