@@ -138,7 +138,7 @@
     };
 
     stateVersion = "${build.stateVersion}";
-    username = "${build.user}";
+    username     = "${build.user}";
   };
 
   
