@@ -126,7 +126,7 @@
       "home"     = "cd $LOC_NIXOS/home-manager && nvim -c \":args ./**/*.nix\"";
       "neovim"   = "cd $LOC_NIXOS/home-manager/programs && nvim -c \":args neovim.nix ./neovim/**/*\"";
       "helix"    = "cd $LOC_NIXOS/home-manager/programs && nvim -c \":args helix.nix ./helix/**/*\"";
-      "clean"    = "nix-env --delete-generations +7 && nix-collect-garbage && nix store optimise && flatpak uninstall --unused -y";
+      "clean"    = "nix-env --delete-generations +9 --profile /nix/var/nix/profiles/system && nix-collect-garbage && nix store optimise && flatpak uninstall --unused -y";
       "list"     = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
       "rebuild"  = "sudo nixos-rebuild switch --flake $LOC_NIXOS/#frame";
       "upgrade"  = "sudo nixos-rebuild switch --flake $LOC_NIXOS/#frame --upgrade";
