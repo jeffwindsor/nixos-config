@@ -1,6 +1,3 @@
-# TODO separate out variables and pass to other files
-# like username 'mid', current version
-
 { inputs, outputs, lib, config, pkgs, build, ... }: {
 
   imports = [

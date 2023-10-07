@@ -33,29 +33,29 @@
   home = {
     homeDirectory = "/home/${build.user}";
     packages = with pkgs; [
-      brave         # backup browser
-      libreoffice   # office
-      megasync      # cloud storage
-      obsidian      # notes
-      popsicle      # usb flasher
-      spotify       # music player
-      thunderbird   # mail
-      transmission  # bit torrent
-      vlc           # video player
+      brave             # backup browser
+      libreoffice       # office
+      megasync          # cloud storage
+      obsidian          # notes
+      popsicle          # usb flasher
+      spotify           # music player
+      thunderbird       # mail
+      transmission-gtk  # bit torrent
+      vlc               # video player
 
-      exa           # ls replacement
-      fd            # find replacement
-      fortune       # saying that make my day
-      freshfetch    # neofetch replacement
-      gcc           # c compiler, required for nvim+treesitter
+      exa               # ls replacement
+      fd                # find replacement
+      fortune           # saying that make my day
+      freshfetch        # neofetch replacement
+      gcc               # c compiler, required for nvim+treesitter
       hledger
       hledger-ui
       hledger-web
-      jq            # json tool
-      ripgrep       # grep replacement
-      sd            # sed replacement
-      xh            # curl replacement
-      xplr          # tui file explorer
+      jq                # json tool
+      ripgrep           # grep replacement
+      sd                # sed replacement
+      xh                # curl replacement
+      xplr              # tui file explorer
     ];
 
     sessionVariables = {
