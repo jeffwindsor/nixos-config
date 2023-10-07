@@ -1,7 +1,10 @@
 {
   enable = true;
   # cmdKeybindings = {};
-  # commands = {};
+  commands = {
+    get-mime-type = "%xdg-mime query filetype \"$f\"";
+    open = "$$OPENER $f";
+  };
   # extraConfig = {};
   # keybindings = {};
   # settings = {};

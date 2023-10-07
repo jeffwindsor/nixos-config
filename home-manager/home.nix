@@ -59,14 +59,15 @@
     ];
 
     sessionVariables = {
-      XDG_STATE_HOME        = "$HOME/.local/state";
-      XDG_DATA_HOME         = "$HOME/.local/share";
-      XDG_CACHE_HOME        = "$HOME/.cache";
-      XDG_CONFIG_HOME       = "$HOME/.config";
-      LOC_SRC               = "$HOME/Source";
+      GIT_LOG_PRETTY_FORMAT = "%C(green)%h%C(reset) - %s%C(cyan) | %an%C(dim) | %ch %C(auto)%d%C(reset)";
       LOC_JEFF              = "$HOME/Source/github.com/jeffwindsor";
       LOC_NIXOS             = "$HOME/Source/github.com/jeffwindsor/nixos-config";
-      GIT_LOG_PRETTY_FORMAT = "%C(green)%h%C(reset) - %s%C(cyan) | %an%C(dim) | %ch %C(auto)%d%C(reset)";
+      LOC_SRC               = "$HOME/Source";
+      OPENER                = "xgd-open";
+      XDG_CACHE_HOME        = "$HOME/.cache";
+      XDG_CONFIG_HOME       = "$HOME/.config";
+      XDG_DATA_HOME         = "$HOME/.local/share";
+      XDG_STATE_HOME        = "$HOME/.local/state";
     };
 
     shellAliases = {
@@ -131,6 +132,7 @@
       "rebuild"  = "sudo nixos-rebuild switch --flake $LOC_NIXOS/#frame";
       "upgrade"  = "sudo nixos-rebuild switch --flake $LOC_NIXOS/#frame --upgrade";
       "shell"    = "nix-shell --command zsh";
+      "dev"      = "nix develop --command zsh";
       # zellij
       "z"        = "zellij";
       "zs"       = "zellij --session";
