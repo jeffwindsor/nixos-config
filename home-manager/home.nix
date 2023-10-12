@@ -60,6 +60,7 @@
 
     sessionVariables = {
       GIT_LOG_PRETTY_FORMAT = "%C(green)%h%C(reset) - %s%C(cyan) | %an%C(dim) | %ch %C(auto)%d%C(reset)";
+      LEDGER_FILE           = "$HOME/Source/github.com/jeffwindsor/financials/personal.hledger";
       LOC_JEFF              = "$HOME/Source/github.com/jeffwindsor";
       LOC_NIXOS             = "$HOME/Source/github.com/jeffwindsor/nixos-config";
       LOC_SRC               = "$HOME/Source";
@@ -120,6 +121,9 @@
       "gup"      = "git-add-commit-push";
       # helix
       "h"        = "helix";
+      # hledger
+      "hi"       = "hledger import"
+      "hid"      = "hledger import --dry-run"
       # nvim
       "v"        = "nvim";
       # nixos
