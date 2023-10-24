@@ -2,8 +2,8 @@
 
   # Nix Colors | https://github.com/tinted-theming/base16-schemes | https://tinted-theming.github.io/base16-gallery/
   colorScheme = with inputs.nix-colors.colorSchemes;
-    decaf;    # decaf; woodland; nova;
-    # Others | atlas; materia; equilibrium-dark; gruvbox-dark-hard; gruvbox-light-hard; hardcore; danqing; tender; tomorrow; ayu-mirage;
+    woodland;    # decaf; woodland; nova; equilibrium-dark;
+    # Others | gruvbox-dark-hard; gruvbox-light-hard; hardcore; danqing; tender; tomorrow; ayu-mirage;
 
   imports = [ 
     inputs.nix-colors.homeManagerModules.default 
