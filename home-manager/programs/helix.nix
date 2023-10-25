@@ -2,14 +2,19 @@
   enable = true;
   # defaultEditor = true;
   settings = {
-    theme = "kanagawa";
-    # molokai github_dark_high_contrast kanagawa sonokai
+
+    theme = "base16_transparent";
+    # molokai github_dark_high_contrast kanagawa sonokai base16_transparent
+
     editor = {
+      # Save on return to normal mode
       auto-save   = true;
-      bufferline  = "always";
-      line-number = "absolute";
-      mouse       = true;
-      # shell       = ["zsh", "-c"];
+      
+      # Show currently open buffers, only when more than one exists.
+      bufferline  = "multiple";
+      
+      # Highlight all lines with a cursor
+      cursorline = true;
       cursor-shape.insert = "bar";
 
       file-picker = {
@@ -23,8 +28,11 @@
         character = "⸽";
       };
 
+      line-number = "absolute";
+      mouse       = true;
+
       statusline = {
-        left   = ["mode" "spinner"];
+        left   = ["mode" "spinner" "version-control"];
         center = ["position" "selections"];
         right  = ["diagnostics" "file-encoding" "file-line-ending" "file-type"];
         mode = {
@@ -57,9 +65,9 @@
         # b = ["move_prev_word_start" "collapse_selection"];
         # C = ["extend_to_line_end" "yank_main_selection_to_clipboard" "delete_selection" "insert_mode"];
         # D = ["extend_to_line_end" "yank_main_selection_to_clipboard" "delete_selection"];
-        d = {
+        # d = {
           # a    = ["select_textobject_around"];
-          d    = ["extend_to_line_bounds" "yank_main_selection_to_clipboard" "delete_selection"];
+          # d    = ["extend_to_line_bounds" "yank_main_selection_to_clipboard" "delete_selection"];
           # down = ["select_mode" "extend_to_line_bounds" "extend_line_below" "yank_main_selection_to_clipboard" "delete_selection" "normal_mode"];
           # G    = ["select_mode" "extend_to_line_bounds" "goto_last_line" "extend_to_line_bounds" "yank_main_selection_to_clipboard" "delete_selection" "normal_mode"];
           # g    = {
@@ -78,21 +86,21 @@
         # e = ["move_next_word_end" "collapse_selection"];
         G = "goto_file_end";
         i = ["insert_mode" "collapse_selection"];
-        j = "move_line_down";
-        k = "move_line_up";
+        # j = "move_line_down";
+        # k = "move_line_up";
         O = ["open_above" "normal_mode"];
         o = ["open_below" "normal_mode"];
-        p = ["paste_clipboard_after" "collapse_selection"];
-        P = ["paste_clipboard_before" "collapse_selection"];
+        # p = ["paste_clipboard_after" "collapse_selection"];
+        # P = ["paste_clipboard_before" "collapse_selection"];
         # S = "surround_add";
-        u = ["undo" "collapse_selection"];
+        # u = ["undo" "collapse_selection"];
         V = ["select_mode" "extend_to_line_bounds"];
         # W = ["move_next_long_word_start" "move_char_right" "collapse_selection"];
         # w = ["move_next_word_start" "move_char_right" "collapse_selection"];
-        x = "delete_selection";
+        # x = "delete_selection";
         Y = ["extend_to_line_end" "yank_main_selection_to_clipboard" "collapse_selection"];
-        y = {
-          y    = ["extend_to_line_bounds" "yank_main_selection_to_clipboard" "normal_mode" "collapse_selection"];
+        # y = {
+          # y    = ["extend_to_line_bounds" "yank_main_selection_to_clipboard" "normal_mode" "collapse_selection"];
           # j    = ["select_mode" "extend_to_line_bounds" "extend_line_below" "yank_main_selection_to_clipboard" "collapse_selection" "normal_mode"];
           # down = ["select_mode" "extend_to_line_bounds" "extend_line_below" "yank_main_selection_to_clipboard" "collapse_selection" "normal_mode"];
           # k    = ["select_mode" "extend_to_line_bounds" "extend_line_above" "yank_main_selection_to_clipboard" "collapse_selection" "normal_mode"];
@@ -103,7 +111,7 @@
           # g    = {
           #   g  = ["select_mode" "extend_to_line_bounds" "goto_file_start" "extend_to_line_bounds" "yank_main_selection_to_clipboard" "collapse_selection" "normal_mode"];
           # };
-        };
+        # };
         space = {
           q = ":quit";
           w = ":write";
