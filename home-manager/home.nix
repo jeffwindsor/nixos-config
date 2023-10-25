@@ -1,15 +1,15 @@
-{ inputs, outputs, pkgs, config, build, ... }: {
+{ inputs, pkgs, config, build, ... }: {
 
   # Nix Colors | https://github.com/tinted-theming/base16-schemes | https://tinted-theming.github.io/base16-gallery/
   colorScheme = with inputs.nix-colors.colorSchemes;
     decaf;    # decaf; woodland; nova; equilibrium-dark;
     # Others | gruvbox-dark-hard; gruvbox-light-hard; hardcore; danqing; tender; tomorrow; ayu-mirage;
 
-  imports = [ 
-    inputs.nix-colors.homeManagerModules.default 
+  imports = [
+    inputs.nix-colors.homeManagerModules.default
     ./programs/dconf.nix
   ];
-  
+
   # programs with managed configuration
   programs = {
     alacritty       = import ./programs/alacritty.nix { config = config; };
@@ -119,21 +119,27 @@
       "gs"       = "git status -sb --ignore-submodules";
       "gup"      = "git-add-commit-push";
       # helix
-      "h"        = "helix";
+      "h"        = "hx";
       # hledger
       "hi"       = "hledger import";
       "hid"      = "hledger import --dry-run";
       "hp"       = "export LEDGER_FILE=$LOC_JEFF/financials-home/ledger && cd $LOC_JEFF/financials-home/";
       "hb"       = "export LEDGER_FILE=$LOC_JEFF/financials-wfp/ledger && cd $LOC_JEFF/financials-wfp/";
       "hunknown" = "hledger -f- -I print unknown";  # filter to "unknown" ledger account
- 
+
       # nvim
       "v"        = "nvim";
       # nixos
-      "system"   = "cd $LOC_NIXOS && nvim -c \":args ./home-manager/home.nix ./nixos/configuration.nix ./nixos/gnome.nix flake.nix\"";
-      "home"     = "cd $LOC_NIXOS/home-manager && nvim -c \":args ./**/*.nix\"";
-      "neovim"   = "cd $LOC_NIXOS/home-manager/programs && nvim -c \":args neovim.nix ./neovim/**/*\"";
-      "helix"    = "cd $LOC_NIXOS/home-manager/programs && nvim -c \":args helix.nix ./helix/**/*\"";
+      "system"   = "cd $LOC_NIXOS && hx ./home-manager/home.nix ./nixos/configuration.nix ./nixos/gnome.nix flake.nix";
+      "home"     = "cd $LOC_NIXOS/home-manager && hx ./**/*.nix";
+      "neovim"   = "cd $LOC_NIXOS/home-manager/programs && hx neovim.nix ./neovim/**/*";
+      "helix"    = "cd $LOC_NIXOS/home-manager/programs && hx helix.nix ./helix/**/*";
+      #  still want nvim, but moving to helix
+      "systemn"   = "cd $LOC_NIXOS && nvim -c \":args ./home-manager/home.nix ./nixos/configuration.nix ./nixos/gnome.nix flake.nix\"";
+      "homen"     = "cd $LOC_NIXOS/home-manager && nvim -c \":args ./**/*.nix\"";
+      "neovimn"   = "cd $LOC_NIXOS/home-manager/programs && nvim -c \":args neovim.nix ./neovim/**/*\"";
+      "helixn"    = "cd $LOC_NIXOS/home-manager/programs && nvim -c \":args helix.nix ./helix/**/*\"";
+
       "clean"    = "nix-env --delete-generations +9 --profile /nix/var/nix/profiles/system && nix-collect-garbage && nix store optimise && flatpak uninstall --unused -y";
       "list"     = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
       "rebuild"  = "sudo nixos-rebuild switch --flake $LOC_NIXOS/#frame";
@@ -150,7 +156,7 @@
     username     = "${build.user}";
   };
 
-  
+
 }
 
 

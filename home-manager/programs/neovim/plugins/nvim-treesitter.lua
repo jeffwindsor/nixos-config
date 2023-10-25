@@ -1,4 +1,4 @@
-pcall(require('nvim-treesitter.install').update { with_sync = true })
+--pcall(require('nvim-treesitter.install').update { with_sync = true })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
