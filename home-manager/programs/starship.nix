@@ -4,7 +4,7 @@
   # enableNushellIntegration = true;
   enableZshIntegration = true;
   settings = {
-    format = "[┌ ](blue)$directory$git_branch$git_status$jobs$nix_shell$container\n[└ ](blue)$shell$time$cmd_duration$character";
+    format = "[┌ ](blue)$directory$git_branch$git_status$jobs$nix_shell$container\n[└ ](blue)$shell$time $cmd_duration$character";
 
     character = {
       error_symbol   = "[:](red)";
