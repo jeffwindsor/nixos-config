@@ -60,7 +60,7 @@
     };
 
     "org/gnome/nautilus/preferences" = {
-      click-policy = "single";
+      click-policy = "double";
       default-folder-viewer = "list-view";
       migrated-gtk-settings = true;
       search-filter-time-type = "last_modified";
