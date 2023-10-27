@@ -54,6 +54,7 @@
       jq                # json tool
       ripgrep           # grep replacement
       sd                # sed replacement
+      wl-clipboard      # wayland cli clipboard enabler
       xh                # curl replacement
       xplr              # tui file explorer
     ];
@@ -75,7 +76,7 @@
       "...."     = "cd ../../../";
       "..."      = "cd ../../";
       ".."       = "cd ..";
-      "dot"      = "cd $XDG_CONFIG_HOME";
+      "dot"      = "cd $LOC_NIXOS";
       "config"   = "cd $XDG_CONFIG_HOME";
       "src"      = "cd $LOC_SRC";
       "srcs"     = "exec-on-git-repos cd \$LOC_SRC";
@@ -86,8 +87,10 @@
       "finb"     = "cd $LOC_JEFF/financials/gnucash/business/imports";
       "finh"     = "cd $LOC_JEFF/financials/gnucash/home/imports";
       "md"       = "cd $HOME/portable/exocortex/markdown";
+
       # bat / cat
       "cat"      = "bat --style=plain";
+
       # exa / ls
       "l"        = "exa -F --group-directories-first";
       "la"       = "exa -F --group-directories-first --git --all";
@@ -95,11 +98,14 @@
       "lla"      = "exa -lF --group-directories-first --git --all";
       "tree"     = "exa --tree --git";
       "treea"    = "exa -lF --tree --git --all";
+
       # grep / ripgrep
       "grep"     = "rg";
       "ar"       = "alias | rg";
+
       # freshfetch
       "f"        = "freshfetch";
+
       # git
       "lg"       = "lazygit";
       "ga"       = "git add";
@@ -118,8 +124,10 @@
       "gr"       = "git remote -vv";
       "gs"       = "git status -sb --ignore-submodules";
       "gup"      = "git-add-commit-push";
+
       # helix
       "h"        = "hx";
+
       # hledger
       "hi"       = "hledger import";
       "hid"      = "hledger import --dry-run";
@@ -129,16 +137,10 @@
 
       # nvim
       "v"        = "nvim";
+
       # nixos
       "system"   = "cd $LOC_NIXOS && hx ./home-manager/home.nix ./nixos/configuration.nix ./nixos/gnome.nix flake.nix";
-      "home"     = "cd $LOC_NIXOS/home-manager && hx ./**/*.nix";
-      "neovim"   = "cd $LOC_NIXOS/home-manager/programs && hx neovim.nix ./neovim/**/*";
-      "helix"    = "cd $LOC_NIXOS/home-manager/programs && hx helix.nix ./helix/**/*";
-      #  still want nvim, but moving to helix
-      "systemn"   = "cd $LOC_NIXOS && nvim -c \":args ./home-manager/home.nix ./nixos/configuration.nix ./nixos/gnome.nix flake.nix\"";
-      "homen"     = "cd $LOC_NIXOS/home-manager && nvim -c \":args ./**/*.nix\"";
-      "neovimn"   = "cd $LOC_NIXOS/home-manager/programs && nvim -c \":args neovim.nix ./neovim/**/*\"";
-      "helixn"    = "cd $LOC_NIXOS/home-manager/programs && nvim -c \":args helix.nix ./helix/**/*\"";
+      "nixos"    = "cd $LOC_NIXOS && hx $(fd --type f | fzf --layout reverse --preview 'bat -n --color=always {}')";
 
       "clean"    = "nix-env --delete-generations +9 --profile /nix/var/nix/profiles/system && nix-collect-garbage && nix store optimise && flatpak uninstall --unused -y";
       "list"     = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
@@ -146,6 +148,7 @@
       "upgrade"  = "sudo nixos-rebuild switch --flake $LOC_NIXOS/#frame --upgrade";
       "shell"    = "nix-shell --command zsh";
       "dev"      = "nix develop --command zsh";
+
       # zellij
       "z"        = "zellij";
       "zs"       = "zellij --session";
