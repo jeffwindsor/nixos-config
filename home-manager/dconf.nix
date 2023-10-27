@@ -141,10 +141,7 @@
 
   "org/gnome/shell" = {
       command-history = [ "r" ];
-      disabled-extensions = [ "space-bar@luchrioh" "executor@raujonas.github.io" "clipman@popov895.ukr.net" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" ];
       enabled-extensions = [ "launch-new-instance@gnome-shell-extensions.gcampax.github.com" "openweather-extension@jenslody.de" "forge@jmmaranan.com" "blur-my-shell@aunetx" "WallpaperSwitcher@Rishu" "appindicatorsupport@rgcjonas.gmail.com" "just-perfection-desktop@just-perfection" "pano@elhan.io" "caffeine@patapon.info" ];
-      last-selected-power-profile = "power-saver";
-      welcome-dialog-last-shown-version = "44.1";
     };
 
     "org/gnome/shell/extensions/WallpaperSwitcher" = {
@@ -198,14 +195,16 @@
       window-focus-left = [ "<Super>h" ];
       window-focus-right = [ "<Super>l" ];
       window-focus-up = [ "<Super>k" ];
+      window-gap-size-decrease = ["<Ctrl><Super>minus"];
+      window-gap-size-increase = ["<Ctrl><Super>plus"];
       window-move-down = [ "<Super><Control><Alt>j" ];
       window-move-left = [ "<Super><Control><Alt>h" ];
       window-move-right = [ "<Super><Control><Alt>l" ];
       window-move-up = [ "<Super><Control><Alt>k" ];
       window-resize-bottom-decrease = [];
       window-resize-bottom-increase = [];
-      window-resize-left-decrease = [];
-      window-resize-left-increase = [];
+      window-resize-left-decrease = ["<Ctrl><Super>minus"];
+      window-resize-left-increase = ["<Ctrl><Super>plus"];
       window-resize-right-increase = [];
       window-resize-top-decrease = [];
       window-resize-top-increase = [];

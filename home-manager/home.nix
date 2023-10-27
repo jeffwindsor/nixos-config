@@ -7,7 +7,7 @@
 
   imports = [
     inputs.nix-colors.homeManagerModules.default
-    ./programs/dconf.nix
+    ./dconf.nix
   ];
 
   # programs with managed configuration

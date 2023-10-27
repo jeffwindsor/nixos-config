@@ -18,6 +18,7 @@
     gnomeExtensions.blur-my-shell       # add some modern blurrrr to the de
     gnomeExtensions.caffeine            # stay awake
     #gnomeExtensions.clipman             # clipboard manager for taskbar
+    #gnomeExtensions.color-picker        # Simple color picker for gnome shell
     #gnomeExtensions.executor            # command output to taskbar: very powerful but I only use it for fortune quotes
     gnomeExtensions.forge               # tiling window manager
     gnomeExtensions.just-perfection     # tweaks to gnome visuals
