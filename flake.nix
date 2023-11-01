@@ -26,7 +26,7 @@
     inherit (self) outputs;
   in
   {
-    # NixOS entrypoint
+    # NixOS entrypoints
     nixosConfigurations = {
       frame = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs outputs build; };
