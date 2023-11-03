@@ -114,7 +114,7 @@
       "gc"       = "git clone";
       "gcm"      = "git-commit";
       "gco"      = "git checkout";
-      "gd"       = "git diff --ignore-space-at-eol -b -w --ignore-blank-lines";
+      "gd"       = "git diff --ignore-space-at-eol -b -w --ignore-blank-lines -U0";
       "gl"       = "git log";
       "gll"      = "git-log-graph";
       "gph"      = "git push";
