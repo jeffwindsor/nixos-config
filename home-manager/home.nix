@@ -106,20 +106,20 @@
       "f"        = "freshfetch";
 
       # git
-      "lg"       = "lazygit";
+      "g"        = "lazygit";
       "ga"       = "git add";
       "gaa"      = "git add --all";
-      "gau"      = "git add -u";
-      "gb"       = "git branch -v";
-      "gc"       = "git clone";
+      # "gau"      = "git add -u";
+      # "gb"       = "git branch -v";
+      # "gc"       = "git clone";
       "gcm"      = "git-commit";
-      "gco"      = "git checkout";
+      # "gco"      = "git checkout";
       "gd"       = "git diff --ignore-space-at-eol -b -w --ignore-blank-lines -U0";
       "gl"       = "git log";
       "gll"      = "git-log-graph";
       "gph"      = "git push";
       "gpl"      = "git pull";
-      "gpls"     = "git-all pull";
+      # "gpls"     = "git-all pull";
       "gr"       = "git remote -vv";
       "gs"       = "git status -sb --ignore-submodules";
       "gup"      = "git-add-commit-push";
