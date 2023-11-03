@@ -19,7 +19,7 @@
     git             = import ./programs/git.nix;
     helix           = import ./programs/helix.nix;
     lf              = import ./programs/lf.nix;
-    neovim          = import ./programs/neovim.nix { config = config; pkgs = pkgs; };
+    # neovim          = import ./programs/neovim.nix { config = config; pkgs = pkgs; };
     starship        = import ./programs/starship.nix;
     tealdeer        = import ./programs/tealdeer.nix;
     zellij          = import ./programs/zellij.nix { config = config; };
@@ -93,8 +93,6 @@
       "cat"      = "bat --style=plain";
 
       # exa / ls
-      "l"        = "exa -F --group-directories-first";
-      "la"       = "exa -F --group-directories-first --git --all";
       "ll"       = "exa -lF --group-directories-first";
       "lla"      = "exa -lF --group-directories-first --git --all";
       "tree"     = "exa --tree --git";
@@ -135,9 +133,6 @@
       "hp"       = "export LEDGER_FILE=$LOC_JEFF/financials-home/ledger && cd $LOC_JEFF/financials-home/";
       "hb"       = "export LEDGER_FILE=$LOC_JEFF/financials-wfp/ledger && cd $LOC_JEFF/financials-wfp/";
       "hunknown" = "hledger -f- -I print unknown";  # filter to "unknown" ledger account
-
-      # nvim
-      "v"        = "nvim";
 
       # nixos
       "system"   = "cd $LOC_NIXOS && hx ./home-manager/home.nix ./nixos/configuration.nix ./nixos/gnome.nix flake.nix";

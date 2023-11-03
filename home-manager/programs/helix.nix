@@ -5,7 +5,7 @@
     theme = "base16_transparent";    # molokai github_dark_high_contrast kanagawa sonokai base16_transparent
     editor = {
       auto-save    = true;
-      # bufferline   = "always";
+      bufferline   = "always";
       color-modes  = true;
       cursor-shape.insert = "bar";
       file-picker  = {
@@ -32,23 +32,19 @@
     keys = {
       insert.esc = ["collapse_selection" "normal_mode"];
       normal = {
+        ";" = "command_mode";
         esc = ["collapse_selection" "keep_primary_selection"];
         a = ["append_mode" "collapse_selection"];
         G = "goto_file_end";
         i = ["insert_mode" "collapse_selection"];
-        O = ["open_above" "normal_mode"];
-        o = ["open_below" "normal_mode"];
+        # O = ["open_above" "normal_mode"];
+        # o = ["open_below" "normal_mode"];
         space = {
           q = ":quit";
-          w = ":write";
-          b = {
-            b = "buffer_picker";
-            a = ":buffer-close-all";
-            c = ":buffer-close";
-            n = ":new";
-          };
+          # w = ":write";
           t = {
             b = ":theme base16_terminal";
+            d = ":theme default";
             g = ":theme github_dark_high_contrast";
             k = ":theme kanagawa";
             m = ":theme molokai";
