@@ -4,11 +4,11 @@
   enable = true;
   enableCompletion = true;
   enableAutosuggestions = true;
-  enableSyntaxHighlighting = true;
+  syntaxHighlighting.enable = true;
   history = {
     expireDuplicatesFirst = true;
     ignorePatterns = [ "rm *" "pkill *" ];
   };
 
-  initExtra = builtins.readFile ./shell/git.functions;
+  initExtra = builtins.readFile ./shell.initExtra;
 }

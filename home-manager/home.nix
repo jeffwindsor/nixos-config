@@ -12,18 +12,18 @@
 
   # programs with managed configuration
   programs = {
-    alacritty       = import ./programs/alacritty.nix { config = config; };
-    bash            = import ./programs/bash.nix;
-    bat             = import ./programs/bat.nix { pkgs = pkgs; };
-    fzf             = import ./programs/fzf.nix;
-    git             = import ./programs/git.nix;
-    helix           = import ./programs/helix.nix;
-    lf              = import ./programs/lf.nix;
-    # neovim          = import ./programs/neovim.nix { config = config; pkgs = pkgs; };
-    starship        = import ./programs/starship.nix;
-    tealdeer        = import ./programs/tealdeer.nix;
-    zellij          = import ./programs/zellij.nix { config = config; };
-    zsh             = import ./programs/zsh.nix;
+    alacritty       = import ./alacritty.nix { config = config; };
+    bash            = import ./bash.nix;
+    bat             = import ./bat.nix { pkgs = pkgs; };
+    fzf             = import ./fzf.nix;
+    git             = import ./git.nix;
+    helix           = import ./helix.nix;
+    lf              = import ./lf.nix;
+    # neovim          = import ./neovim.nix { config = config; pkgs = pkgs; };
+    starship        = import ./starship.nix;
+    tealdeer        = import ./tealdeer.nix;
+    zellij          = import ./zellij.nix { config = config; };
+    zsh             = import ./zsh.nix;
     chromium.enable = true;
     firefox.enable  = true;
     lazygit.enable  = true;
@@ -40,11 +40,11 @@
       obsidian          # notes
       popsicle          # usb flasher
       spotify           # music player
-      thunderbird       # mail
+      # thunderbird       # mail
       transmission-gtk  # bit torrent
       vlc               # video player
 
-      exa               # ls replacement
+      eza               # ls replacement
       fd                # find replacement
       fortune           # saying that make my day
       freshfetch        # neofetch replacement
@@ -93,10 +93,10 @@
       "cat"      = "bat --style=plain";
 
       # exa / ls
-      "ll"       = "exa -lF --group-directories-first";
-      "lla"      = "exa -lF --group-directories-first --git --all";
-      "tree"     = "exa --tree --git";
-      "treea"    = "exa -lF --tree --git --all";
+      "ll"       = "eza -lF --group-directories-first";
+      "lla"      = "eza -lF --group-directories-first --git --all";
+      "tree"     = "eza --tree --git";
+      "treea"    = "eza -lF --tree --git --all";
 
       # grep / ripgrep
       "grep"     = "rg";
@@ -129,7 +129,7 @@
 
       # hledger
       "hi"       = "hledger import";
-      "hid"      = "hledger import --dry-run";
+      "hid"      = "hledger import ./--dry-run";
       "hp"       = "export LEDGER_FILE=$LOC_JEFF/financials-home/ledger && cd $LOC_JEFF/financials-home/";
       "hb"       = "export LEDGER_FILE=$LOC_JEFF/financials-wfp/ledger && cd $LOC_JEFF/financials-wfp/";
       "hunknown" = "hledger -f- -I print unknown";  # filter to "unknown" ledger account

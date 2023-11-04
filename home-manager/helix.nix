@@ -32,13 +32,19 @@
     keys = {
       insert.esc = ["collapse_selection" "normal_mode"];
       normal = {
+        # short hand so I dont have to use shift to get command mode
         ";" = "command_mode";
+        # vim like esc 
         esc = ["collapse_selection" "keep_primary_selection"];
+        # vim like append
         a = ["append_mode" "collapse_selection"];
-        G = "goto_file_end";
+        # vim like insert
         i = ["insert_mode" "collapse_selection"];
+        # open lines but return to normal mode
         # O = ["open_above" "normal_mode"];
         # o = ["open_below" "normal_mode"];
+
+        # special menus
         space = {
           q = ":quit";
           # w = ":write";

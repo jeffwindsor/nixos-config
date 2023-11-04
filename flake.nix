@@ -1,17 +1,14 @@
 # BASED OFF: https://github.com/Misterio77/nix-starter-configs
 {
-  description = "Jeff's NixOS and Home Manager Configuration";
+  description = "Jeff's NixOS";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";                     # Stable Nix Packages (Default)
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";         # Unstable Nix Packages
-
-    home-manager = {                                                      # User Environment Manager
-      url = "github:nix-community/home-manager/release-23.05";
+    home-manager = {
       inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/home-manager";
     };
-
-    nix-colors.url = "github:misterio77/nix-colors";                      # base 16 color maanger
+    nix-colors.url = "github:misterio77/nix-colors";           # base 16 color maanger
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   };
 
   outputs = { self, nixpkgs, home-manager, ... } @ inputs :
