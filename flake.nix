@@ -15,7 +15,7 @@
   let
     build = {
       hostname         = "frame";
-      stateVersion     = "23.05";
+      stateVersion     = "23.11";
       user             = "mid";
       userDescription  = "The Middle Way";
       timeZone         = "America/Los_Angeles";
