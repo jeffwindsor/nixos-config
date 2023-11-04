@@ -1,6 +1,6 @@
 {
   enable = true;
-  # defaultEditor = true;
+  defaultEditor = true;
   settings = {
     theme = "base16_transparent";    # molokai github_dark_high_contrast kanagawa sonokai base16_transparent
     editor = {
