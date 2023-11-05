@@ -132,7 +132,7 @@
       "system"   = "cd $LOC_NIXOS && hx ./home-manager/home.nix ./nixos/configuration.nix ./nixos/gnome.nix flake.nix";
       "nixos"    = "cd $LOC_NIXOS && hx $(fd --type f | fzf --layout reverse --preview 'bat -n --color=always {}')";
 
-      "clean"    = "nix-env --delete-generations +9 --profile /nix/var/nix/profiles/system && nix-collect-garbage && nix store optimise && flatpak uninstall --unused -y";
+      "clean"    = "nix-env --delete-generations +9 && nix-collect-garbage && nix store optimise && flatpak uninstall --unused -y";
       "list"     = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
       "rebuild"  = "sudo nixos-rebuild switch --flake $LOC_NIXOS/#frame";
       "upgrade"  = "sudo nixos-rebuild switch --flake $LOC_NIXOS/#frame --upgrade";
