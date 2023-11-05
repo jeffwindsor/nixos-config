@@ -3,31 +3,30 @@
   description = "Jeff's NixOS";
 
   inputs = {
-    home-manager = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:nix-community/home-manager";
-    };
-    nix-colors.url = "github:misterio77/nix-colors";           # base 16 color maanger
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url      = "github:nixos/nixpkgs/nixos-unstable";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nix-colors.url   = "github:misterio77/nix-colors";           # base 16 color maanger
   };
 
   outputs = { self, nixpkgs, home-manager, ... } @ inputs :
-  let
-    build = {
-      hostname         = "frame";
-      stateVersion     = "23.11";
-      user             = "mid";
-      userDescription  = "The Middle Way";
-      timeZone         = "America/Los_Angeles";
-    };
-    inherit (self) outputs;
-  in
   {
     # NixOS entrypoints
     nixosConfigurations = {
+      
+      # framework laptop
       frame = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs outputs build; };
-        modules = [./nixos/configuration.nix];
+        specialArgs = { 
+          inherit inputs;
+          build = {
+            hostname         = "frame";
+            stateVersion     = "23.11";
+            user             = "mid";
+            userDescription  = "The Middle Way";
+            timeZone         = "America/Los_Angeles";
+          };
+        };
+        modules = [ ./nixos/configuration.nix ];
       };
     };
   };
