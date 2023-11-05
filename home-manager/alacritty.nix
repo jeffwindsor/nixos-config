@@ -1,4 +1,4 @@
-{ config }: {
+{ ... }: {
     enable = true;
     settings = {
       
@@ -16,32 +16,36 @@
         size = 12;
       };
 
-      colors = with config.colorScheme.colors; {
-        primary = {
-          background = "#${base00}";  # base00 - Default Background
-          foreground = "#${base05}";  # base05 - Default Foreground, Caret, Delimiters, Operators
+      colors = {
+        #TENDER
+        primary ={
+          background = "#282828";
+          foreground = "#eeeeee";
         };
+
         normal = {
-          black =   "#${base00}";     # base00 - Default Background
-          blue =    "#${base0D}";     # base0D - Functions, Methods, Attribute IDs, Headings
-          cyan =    "#${base0C}";     # base0C - Support, Regular Expressions, Escape Characters, Markup Quotes
-          green =   "#${base0B}";     # base0B - Strings, Inherited Class, Markup Code, Diff Inserted
-          magenta = "#${base0E}";     # base0E - Keywords, Storage, Selector, Markup Italic, Diff Changed
-          red =     "#${base08}";     # base08 - Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
-          white =   "#${base05}";
-          yellow =  "#${base0A}";     # base0A - Classes, Markup Bold, Search Text Background
+          black =   "#282828";
+          red =     "#f43753";
+          green =   "#c9d05c";
+          yellow =  "#ffc24b";
+          blue =    "#b3deef";
+          magenta = "#d3b987";
+          cyan =    "#73cef4";
+          white =   "#eeeeee";
         };
+        
         bright = {
-          black =   "#${base03}";     # base03 - Comments, Invisibles, Line Highlighting
-          blue =    "#${base0D}";
-          cyan =    "#${base0C}";
-          green =   "#${base0B}";
-          magenta = "#${base0E}";
-          red =     "#${base08}";
-          white =   "#${base07}";
-          yellow =  "#${base0A}";
+          black =   "#4c4c4c";
+          red =     "#f43753";
+          green =   "#c9d05c";
+          yellow =  "#ffc24b";
+          blue =    "#b3deef";
+          magenta = "#d3b987";
+          cyan =    "#73cef4";
+          white =   "#feffff";
         };
       };
-      draw_bold_text_with_bright_colors = false;
+    
+      # draw_bold_text_with_bright_colors = false;
     };
 }

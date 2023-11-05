@@ -1,12 +1,6 @@
 { inputs, pkgs, config, build, ... }: {
 
-  # Nix Colors | https://github.com/tinted-theming/base16-schemes | https://tinted-theming.github.io/base16-gallery/
-  colorScheme = with inputs.nix-colors.colorSchemes;
-    woodland;    # decaf; woodland; nova; equilibrium-dark;
-    # Others | gruvbox-dark-hard; gruvbox-light-hard; hardcore; danqing; tender; tomorrow-night; ayu-mirage;
-
   imports = [
-    inputs.nix-colors.homeManagerModules.default
     ./dconf.nix
   ];
 

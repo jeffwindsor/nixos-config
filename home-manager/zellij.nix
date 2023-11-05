@@ -1,26 +1,24 @@
-{ config, ... }: {
+{ ... }: {
   enable = true;
   #enableBashIntegration = true;
   #enableZshIntegration = true;
   settings = {
     copy_command = "wl-copy";
-    
-           
-    theme = "base16";
-    themes = with config.colorScheme.colors; {
-      base16 = {
-        fg = "#${base06}";
-        bg = "#${base01}";
-        black = "#${base00}";
-        red = "#${base08}";
-        green = "#${base0B}";
-        yellow = "#${base0A}";
-        blue = "#${base0D}";
-        magenta = "#${base0E}";
-        cyan = "#${base0C}";
-        white = "#${base07}";
-        orange = "#${base09}";
+    theme = "tender";
+    themes = {
+      tender= {
+        fg = "#eeeeee";
+        bg = "#282828";
+        black = "#282828";
+        red = "#f43753";
+        green = "#c9d05c";
+        yellow = "#ffc24b";
+        blue = "#b3deef";
+        magenta = "#d3b987";
+        cyan = "#73cef4";
+        white = "#eeeeee";
+        orange = "#715b2f";
       };
     };
   };
-}
+}   
