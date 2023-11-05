@@ -2,21 +2,25 @@
   enable = true;
   defaultEditor = true;
   settings = {
-    theme = "base16_transparent";    # molokai github_dark_high_contrast kanagawa sonokai base16_transparent
+    theme = "kanagawa";    # molokai github_dark_high_contrast kanagawa sonokai base16_transparent
     editor = {
       auto-save    = true;
       bufferline   = "always";
       color-modes  = true;
       cursor-shape.insert = "bar";
+      line-number = "relative";
+      
       file-picker  = {
         hidden     = false;
         git-ignore = true;
         git-global = true; 
       };
+      
       indent-guides = {
         render      = true;
         character   = "⸽";
       };
+      
       statusline = {
         left   = ["mode" "version-control" "file-name" "spinner"];
         center = [];
