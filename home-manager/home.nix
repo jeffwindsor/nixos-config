@@ -11,7 +11,7 @@
     bat             = import ./bat.nix { pkgs = pkgs; };
     fzf             = import ./fzf.nix;
     git             = import ./git.nix;
-    helix           = import ./helix.nix;
+    helix           = import ./helix.nix { pkgs = pkgs; };
     lf              = import ./lf.nix;
     # neovim          = import ./neovim.nix { config = config; pkgs = pkgs; };
     starship        = import ./starship.nix;
