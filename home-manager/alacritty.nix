@@ -13,7 +13,7 @@
       font = {
         # normal.family = "FiraCode Nerd Font Mono";
         normal.family = "JetBrainsMono Nerd Font";
-        size = 12;
+        size = 16;
       };
 
       colors = {
