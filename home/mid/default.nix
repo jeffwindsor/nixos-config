@@ -126,13 +126,12 @@
       "hunknown" = "hledger -f- -I print unknown";  # filter to "unknown" ledger account
 
       # nixos
-      "system"   = "cd $LOC_NIXOS && hx ./home-manager/home.nix ./nixos/configuration.nix ./nixos/gnome.nix flake.nix";
-      "nixos"    = "cd $LOC_NIXOS && hx $(fd --type f | fzf --layout reverse --preview 'bat -n --color=always {}')";
+      "system"   = "cd $LOC_NIXOS && hx .";
 
-      "clean"    = "nix-env --delete-generations +9 && nix-collect-garbage && nix store optimise && flatpak uninstall --unused -y";
+      "clean"    = "nix-env --delete-generations +10 && nix-collect-garbage && nix store optimise && flatpak uninstall --unused -y";
       "list"     = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
       "rebuild"  = "sudo nixos-rebuild switch --flake $LOC_NIXOS";
-      "upgrade"  = "sudo nixos-rebuild switch --flake $LOC_NIXOS --upgrade";
+      "upgrade"  = "nix flake update";
       "shell"    = "nix-shell --command zsh";
       "dev"      = "nix develop --command zsh";
 
