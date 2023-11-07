@@ -1,8 +1,6 @@
-{ inputs, pkgs, config, build, ... }: {
+{ pkgs, config, ... }: {
 
-  imports = [
-    ./dconf.nix
-  ];
+  imports = [ ./dconf.nix ];
 
   # programs with managed configuration
   programs = {
@@ -26,7 +24,7 @@
   };
 
   home = {
-    homeDirectory = "/home/${build.user}";
+    homeDirectory = "/home/mid";
     packages = with pkgs; [
       brave             # backup browser
       libreoffice       # office
@@ -42,14 +40,13 @@
       fd                # find replacement
       fortune           # saying that make my day
       freshfetch        # neofetch replacement
-      gcc               # c compiler, required for nvim+treesitter
+      # gcc               # c compiler, required for nvim+treesitter
       hledger
       hledger-ui
       hledger-web
       jq                # json tool
       ripgrep           # grep replacement
       sd                # sed replacement
-      wl-clipboard      # wayland cli clipboard enabler
       xh                # curl replacement
       xplr              # tui file explorer
     ];
@@ -134,8 +131,8 @@
 
       "clean"    = "nix-env --delete-generations +9 && nix-collect-garbage && nix store optimise && flatpak uninstall --unused -y";
       "list"     = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
-      "rebuild"  = "sudo nixos-rebuild switch --flake $LOC_NIXOS/#frame";
-      "upgrade"  = "sudo nixos-rebuild switch --flake $LOC_NIXOS/#frame --upgrade";
+      "rebuild"  = "sudo nixos-rebuild switch --flake $LOC_NIXOS";
+      "upgrade"  = "sudo nixos-rebuild switch --flake $LOC_NIXOS --upgrade";
       "shell"    = "nix-shell --command zsh";
       "dev"      = "nix develop --command zsh";
 
@@ -145,8 +142,8 @@
       "zl"       = "zellij --layout";
     };
 
-    stateVersion = "${build.stateVersion}";
-    username     = "${build.user}";
+    stateVersion = "23.11";
+    username     = "mid";
   };
 
 

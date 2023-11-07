@@ -1,21 +1,25 @@
 { ... }: {
     enable = true;
     settings = {
+      cursor.style = "Block";
       
+      env.TERM = "xterm-256color";
+      
+      font = {
+        # normal.family = "FiraCode Nerd Font Mono";
+        normal.family = "JetBrainsMono Nerd Font";
+        size = 14;
+        draw_bold_text_with_bright_colors = true;
+      };
+      
+      selection.save_to_clipboard = true;
+
       window = {
         padding = { x = 10; y = 10; };
         opacity = 0.98;
         decorations = "none";
       };
       
-      cursor.style = "Block";
-      
-      font = {
-        # normal.family = "FiraCode Nerd Font Mono";
-        normal.family = "JetBrainsMono Nerd Font";
-        size = 16;
-      };
-
       colors = {
         #TENDER
         primary ={
@@ -46,6 +50,5 @@
         };
       };
     
-      # draw_bold_text_with_bright_colors = false;
     };
 }

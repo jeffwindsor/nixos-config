@@ -1,8 +1,6 @@
-{ inputs, outputs, lib, config, pkgs, build, ... }: {
+{ pkgs, ... }: {
 
   imports = [
-    # ./hyprland.nix
-    inputs.home-manager.nixosModules.home-manager
     ./gnome.nix                                     # add personalized gnome de
     ./hardware-configuration.nix                    # generated hardware config
   ];
@@ -41,7 +39,7 @@
   hardware.pulseaudio.enable = false;               # AUDIO: turn off default pulse audio to use pipewire
 
   networking= {
-    hostName              = "${build.hostname}";
+    hostName              = "frame";
     networkmanager.enable = true;                   # Wifi Manager
     firewall.enable       = true;
   };
@@ -90,23 +88,16 @@
 
   system = {
     autoUpgrade.enable = true;
-    stateVersion       = "${build.stateVersion}";
+    stateVersion       = "23.11";
   };
 
-  time.timeZone = "${build.timeZone}";
+  time.timeZone = "America/Los_Angeles";
 
-  users.users.${build.user} = {
-    description  = "${build.userDescription}";
+  users.users.mid = {
+    description  = "The Middle Way";
     extraGroups  = [ "networkmanager" "wheel" ];
     isNormalUser = true;
-    packages     = with pkgs; [];
     shell        = pkgs.zsh;
   };
 
-  home-manager = {
-    extraSpecialArgs    = { inherit inputs outputs build; };
-    useGlobalPkgs       = true;
-    useUserPackages     = true;
-    users.${build.user} = import ../home-manager/home.nix;
-  };
 }

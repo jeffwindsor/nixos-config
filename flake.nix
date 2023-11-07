@@ -1,4 +1,3 @@
-# BASED OFF: https://github.com/Misterio77/nix-starter-configs
 {
   description = "Jeff's NixOS";
 
@@ -6,27 +5,30 @@
     nixpkgs.url      = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    # nix-colors.url   = "github:misterio77/nix-colors";           # base 16 color maanger
   };
 
-  outputs = { self, nixpkgs, home-manager, ... } @ inputs :
+  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
   {
     # NixOS entrypoints
     nixosConfigurations = {
       
       # framework laptop
-      frame = nixpkgs.lib.nixosSystem {
-        specialArgs = { 
-          inherit inputs;
-          build = {
-            hostname         = "frame";
-            stateVersion     = "23.11";
-            user             = "mid";
-            userDescription  = "The Middle Way";
-            timeZone         = "America/Los_Angeles";
-          };
-        };
-        modules = [ ./nixos/configuration.nix ];
+      "frame" = nixpkgs.lib.nixosSystem {
+        specialArgs = inputs; 
+        system      = "x86_64-linux";
+        modules     = [
+          ./nixos/configuration.nix
+          
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs       = true;
+              useUserPackages     = true;
+              users.mid           = import ./home-manager/home.nix;
+            };
+          }
+
+        ];
       };
     };
   };

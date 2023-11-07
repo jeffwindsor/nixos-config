@@ -84,6 +84,9 @@
         
         # vim like append
         # a = ["append_mode" "collapse_selection"];
+
+        # vim like delete line
+        d = { d = ["select_mode" "extend_to_line_bounds" "delete_selection"]; };
         
         # vim like insert
         # i = ["insert_mode" "collapse_selection"];
@@ -102,7 +105,7 @@
         x = "delete_selection";
         
         # vim like esc 
-        esc = ["collapse_selection" "keep_primary_selection"];
+        esc = ["collapse_selection" "keep_primary_selection" ":write"];
         
         space = {
           # quit

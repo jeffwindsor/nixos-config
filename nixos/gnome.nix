@@ -6,6 +6,8 @@
 
   # Add packages
   environment.systemPackages = (with pkgs; [
+    wl-clipboard                        # wayland cli clipboard enabler
+
     # preferred packages
     gnome-extension-manager             # improved extension manager
     gnome-firmware                      # firmware application
