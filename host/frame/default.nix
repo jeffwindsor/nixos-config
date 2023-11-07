@@ -1,7 +1,6 @@
 { pkgs, ... }: {
 
   imports = [
-    ./gnome.nix                                     # add personalized gnome de
     ./hardware-configuration.nix                    # generated hardware config
   ];
 
