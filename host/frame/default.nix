@@ -6,7 +6,10 @@
 
   boot = {
     loader = {
-      systemd-boot.enable      = true;              # EFI boot manager
+      systemd-boot = {
+        enable      = true;                         # EFI boot manager
+        configurationLimit = 10;                    # limit to 10 generations
+      };
       efi.canTouchEfiVariables = true;              # installation can modify EFI boot variables
     };
 
