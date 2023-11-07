@@ -9,16 +9,18 @@
 
   outputs = inputs@{ self, nixpkgs, home-manager, ... }:
   {
-    # NixOS entrypoints
     nixosConfigurations = {
       
-      # framework laptop
-      "frame" = nixpkgs.lib.nixosSystem {
+      # config for framework 13 laptop
+      frame = nixpkgs.lib.nixosSystem {
         specialArgs = inputs; 
         system      = "x86_64-linux";
         modules     = [
+
+          # nix os configuration (includes gnome and hardware)
           ./nixos/configuration.nix
-          
+
+          # home manager configuration
           home-manager.nixosModules.home-manager
           {
             home-manager = {

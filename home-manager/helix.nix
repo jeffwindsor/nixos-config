@@ -85,8 +85,8 @@
         # vim like append
         # a = ["append_mode" "collapse_selection"];
 
-        # vim like delete line
-        d = { d = ["select_mode" "extend_to_line_bounds" "delete_selection"]; };
+        # delete line
+        # D = ["select_mode" "extend_to_line_bounds" "delete_selection"];
         
         # vim like insert
         # i = ["insert_mode" "collapse_selection"];
@@ -100,9 +100,11 @@
         
         # vim like yank + yank to clipboard
         y = ["yank_main_selection_to_clipboard" "yank"];
+        Y = ["select_mode" "extend_to_line_bounds" "yank_main_selection_to_clipboard" "yank"];
 
         # vim like delete
         x = "delete_selection";
+        X = ["select_mode" "extend_to_line_bounds" "delete_selection"];
         
         # vim like esc 
         esc = ["collapse_selection" "keep_primary_selection" ":write"];
