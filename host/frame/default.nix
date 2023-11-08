@@ -93,13 +93,13 @@
     stateVersion       = "23.11";
   };
 
-  time.timeZone = "America/Los_Angeles";
+  # time.timeZone = "America/Los_Angeles";
 
-  users.users.mid = {
-    description  = "The Middle Way";
-    extraGroups  = [ "networkmanager" "wheel" ];
-    isNormalUser = true;
-    shell        = pkgs.zsh;
-  };
+  # users.users.mid = {
+  #   description  = "The Middle Way";
+  #   extraGroups  = [ "networkmanager" "wheel" ];
+  #   isNormalUser = true;
+  #   shell        = pkgs.zsh;
+  # };
 
 }

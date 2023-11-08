@@ -17,11 +17,25 @@
         system      = "x86_64-linux";
         modules     = [
 
-          # TODO : Connect the host user(name) to selection of home user(name/location)?
+          # Host
           ./host/frame
+          
+          # DE
           ./modules/gnome.nix
 
-          # home manager configuration
+          # User
+          {
+            time.timeZone = "America/Los_Angeles";
+
+            users.users.mid = {
+              description  = "The Middle Way";
+              extraGroups  = [ "networkmanager" "wheel" ];
+              isNormalUser = true;
+              # shell        = pkgs.zsh;
+            };
+          }
+
+          # Home
           home-manager.nixosModules.home-manager
           {
             home-manager = {
