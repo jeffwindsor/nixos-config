@@ -1,21 +1,21 @@
-{ pkgs, config, ... }: {
+{ pkgs,  ... }: {
 
-  imports = [ ./dconf.nix ];
+  imports = [ 
+    ./dconf.nix 
+    ./alacritty.nix
+    ./bash.nix
+    ./bat.nix
+    ./fzf.nix
+    ./git.nix
+    ./helix.nix
+    ./lf.nix
+    ./starship.nix
+    ./tealdeer.nix
+    ./zellij.nix
+    ./zsh.nix
+  ];
 
-  # programs with managed configuration
   programs = {
-    alacritty       = import ./alacritty.nix { config = config; };
-    bash            = import ./bash.nix;
-    bat             = import ./bat.nix { pkgs = pkgs; };
-    fzf             = import ./fzf.nix;
-    git             = import ./git.nix;
-    helix           = import ./helix.nix { pkgs = pkgs; };
-    lf              = import ./lf.nix;
-    # neovim          = import ./neovim.nix { config = config; pkgs = pkgs; };
-    starship        = import ./starship.nix;
-    tealdeer        = import ./tealdeer.nix;
-    zellij          = import ./zellij.nix { config = config; };
-    zsh             = import ./zsh.nix;
     chromium.enable = true;
     firefox.enable  = true;
     lazygit.enable  = true;
