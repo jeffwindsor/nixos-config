@@ -28,25 +28,25 @@
           foreground = "#eeeeee";
         };
 
-        normal = {
+        bright = {
           black =   "#282828";
-          red =     "#f43753";
-          green =   "#c9d05c";
-          yellow =  "#ffc24b";
-          blue =    "#b3deef";
-          magenta = "#d3b987";
-          cyan =    "#73cef4";
-          white =   "#eeeeee";
+          red =     "#c5152f";
+          green =   "#9faa00";
+          yellow =  "#ffb118";
+          blue =    "#44bdf0";
+          magenta = "#876faf";
+          cyan =    "#89cce6";
+          white =   "#dadada";
         };
         
-        bright = {
+        normal = {
           black =   "#4c4c4c";
           red =     "#f43753";
           green =   "#c9d05c";
           yellow =  "#ffc24b";
-          blue =    "#b3deef";
-          magenta = "#d3b987";
-          cyan =    "#73cef4";
+          blue =    "#73cef4";
+          magenta = "#a38fc1";
+          cyan =    "#b3deef";
           white =   "#feffff";
         };
       };
@@ -54,3 +54,4 @@
     };
   };
 }
+
