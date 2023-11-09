@@ -17,12 +17,9 @@
   };
 
   environment = {
-    pathsToLink = [ "/share/zsh" ];                 # ZSH
-
-    shells = with pkgs; [
+    shells = with pkgs; [                           # List of available shells
       bash
       nushell
-      zsh                                           # ZSH
     ];
 
     systemPackages = with pkgs; [
@@ -92,14 +89,4 @@
     autoUpgrade.enable = true;
     stateVersion       = "23.11";
   };
-
-  # time.timeZone = "America/Los_Angeles";
-
-  # users.users.mid = {
-  #   description  = "The Middle Way";
-  #   extraGroups  = [ "networkmanager" "wheel" ];
-  #   isNormalUser = true;
-  #   shell        = pkgs.zsh;
-  # };
-
 }

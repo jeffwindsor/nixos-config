@@ -12,7 +12,6 @@
     ./starship.nix
     ./tealdeer.nix
     ./zellij.nix
-    ./zsh.nix
   ];
 
   programs = {
