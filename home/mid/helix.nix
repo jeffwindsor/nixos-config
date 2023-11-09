@@ -59,7 +59,7 @@
         };
 
         statusline = {
-          left   = [ "mode" "spinner" "file-name" "version-control" ];
+          left   = [ "mode" "spinner" "file-name" "file-modification-indicator" "version-control" ];
           center = [ "position" "selections" ];
           right  = [ "diagnostics" "file-encoding" "file-line-ending" "file-type"];
         };
