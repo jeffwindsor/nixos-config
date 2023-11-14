@@ -58,8 +58,6 @@
     };
   };
 
-  programs.zsh.enable = true;                       # ZSH
-
   security.rtkit.enable = true;                     # AUDIO: used by pipewire
 
   services = {

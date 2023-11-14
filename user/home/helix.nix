@@ -59,7 +59,7 @@
         };
 
         statusline = {
-          left   = [ "mode" "spinner" "file-name" "file-modification-indicator" "version-control" ];
+          left   = [ "mode" "spinner" "version-control" "file-name" "file-modification-indicator" ];
           center = [ "position" "selections" ];
           right  = [ "diagnostics" "file-encoding" "file-line-ending" "file-type"];
         };
@@ -85,7 +85,13 @@
           # vim like line movement
           "^" = "goto_line_start";
           "$" = "goto_line_end";
-        
+
+          # Navigating Buffers
+          "A-left" = "goto_previous_buffer";
+          "A-right" = "goto_next_buffer";
+          "A-w" = ":buffer-close";
+          "A-/" = "repeat_last_motion";
+          
           # vim like append
           # a = ["append_mode" "collapse_selection"];
 

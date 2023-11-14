@@ -1,5 +1,5 @@
 {
-  description = "Jeff's NixOS";
+  description = "Nix Sauce";
 
   inputs = {
     nixpkgs.url      = "github:nixos/nixpkgs/nixos-unstable";
@@ -10,43 +10,32 @@
   outputs = inputs@{ self, nixpkgs, home-manager, ... }:
   {
     nixosConfigurations = {
-      
-      # framework 13 laptop - gnome w/ user "mid"
-      frame = nixpkgs.lib.nixosSystem {
+
+      #########################################################
+      "frame" = nixpkgs.lib.nixosSystem {
         specialArgs = inputs; 
         system      = "x86_64-linux";
         modules     = [
-
-          # Host
-          ./host/frame
           
-          # DE
-          ./modules/gnome.nix
+          ./host/framework13
+          ./de/gnome
+          ./user/mid.nix
 
-          # User
-          {
-            time.timeZone = "America/Los_Angeles";
-
-            users.users.mid = {
-              description  = "The Middle Way";
-              extraGroups  = [ "networkmanager" "wheel" ];
-              isNormalUser = true;
-              # shell        = pkgs.zsh;
-            };
-          }
-
-          # Home
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              useGlobalPkgs       = true;
-              useUserPackages     = true;
-              users.mid           = import ./home/mid;
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.mid = import ./user/home.nix;
             };
           }
-
+          
         ];
       };
+
+      #########################################################
+      # other nixos configs
+      
     };
   };
 

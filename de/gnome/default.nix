@@ -1,8 +1,7 @@
-{ pkgs, ... }:{
+{ home-manager, pkgs, ... }:{
 
-  # imports = [
-  #   ./gnome/extensions/forge.nix  
-  # ]
+  # use home manager to set gnome dconf values
+  # home-manager.imports = [ ./home/dconf.nix ];
 
   # Add packages
   environment.systemPackages = (with pkgs; [
