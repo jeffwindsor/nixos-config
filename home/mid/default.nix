@@ -1,31 +1,30 @@
 { pkgs,  ... }: {
 
-  # home manager modules
   imports = [ 
-    ../de/gnome/home/dconf.nix
-  
-    ./home/alacritty.nix
-    ./home/bash.nix
-    ./home/bat.nix
-    ./home/chromium.nix
-    ./home/firefox.nix
-    ./home/fzf.nix
-    ./home/git.nix
-    ./home/helix.nix
-    ./home/lazygit.nix
-    ./home/lf.nix
-    ./home/nushell.nix
-    ./home/starship.nix
-    ./home/tealdeer.nix
-    ./home/zellij.nix
+    ./dconf.nix 
+    ./alacritty.nix
+    ./bash.nix
+    ./bat.nix
+    ./fzf.nix
+    ./git.nix
+    ./helix.nix
+    ./lf.nix
+    ./starship.nix
+    ./tealdeer.nix
+    ./zellij.nix
   ];
 
-  home = {
-    stateVersion  = "23.11";
-    username      = "mid";
-    homeDirectory = "/home/mid";
+  programs = {
+    chromium.enable = true;
+    firefox.enable  = true;
+    lazygit.enable  = true;
+    nushell.enable  = true;
+    # pywal.enable    = true;
+  };
 
-    packages      = with pkgs; [
+  home = {
+    homeDirectory = "/home/mid";
+    packages = with pkgs; [
       brave             # backup browser
       libreoffice       # office
       megasync          # cloud storage
@@ -140,7 +139,13 @@
       "zs"       = "zellij --session";
       "zl"       = "zellij --layout";
     };
+
+    stateVersion = "23.11";
+    username     = "mid";
   };
+
+
 }
+
 
 
