@@ -1,4 +1,9 @@
 { pkgs, ... }: {
+  
+  home.shellAliases = {
+    "h"        = "hx";
+  };
+  
   programs.helix= {
     enable = true;
     defaultEditor = true;
@@ -75,7 +80,11 @@
           esc = ["collapse_selection" "normal_mode" ":write"]; 
         };
         normal = {
-        
+          # windows
+          "A-." = ":bn";
+          "A-," = ":bp";
+          "A-w" = ":bc";
+          
           # short hand so I dont have to use shift to get command mode
           ";" = "command_mode";
 

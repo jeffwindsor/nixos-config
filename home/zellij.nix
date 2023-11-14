@@ -1,4 +1,11 @@
 { ... }: {
+  
+  home.shellAliases = {
+    "z"        = "zellij";
+    "zs"       = "zellij --session";
+    "zl"       = "zellij --layout";
+  };
+  
   programs.zellij = {
     enable = true;
     #enableBashIntegration = true;

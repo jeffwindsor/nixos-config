@@ -1,20 +1,14 @@
 { pkgs, ... }:{
 
-  # imports = [
-  #   ./gnome/extensions/forge.nix  
-  # ]
-
-  # Add packages
-  environment.systemPackages = (with pkgs; [
+  # Add packages I like with Gnome
+  environment.systemPackages = with pkgs; [
     wl-clipboard                        # wayland cli clipboard enabler
-
-    # preferred packages
     gnome-extension-manager             # improved extension manager
     gnome-firmware                      # firmware application
     gnome.gnome-terminal                # simple backup terminal
     gnome.seahorse                      # manage encryption keys and passwords in the GnomeKeyring
 
-    # preferred gnome extensions
+    #### gnome extensions #####
     gnomeExtensions.appindicator        # shows old-school icons in tray (some programs need this, like mega sync)
     #gnomeExtensions.auto-move-windows   # allow the forever assignment of application to a specific desktop
     gnomeExtensions.blur-my-shell       # add some modern blurrrr to the de
@@ -29,10 +23,10 @@
     #gnomeExtensions.pano                # Next-gen Clipboard manager for Gnome Shell
     #gnomeExtensions.space-bar           # display of workspace indicators (like i3)
     gnomeExtensions.wallpaper-switcher  # auto switch wallpapers
-  ]);
+  ];
 
-  # Exclude Packages
-  environment.gnome.excludePackages = (with pkgs; [
+  # Exclude Packages from Gnome Derivation I do not need
+  environment.gnome.excludePackages = with pkgs; [
     gnome-tour                          # gnome first install tour
     gnome.cheese                        # webcam tool
     gnome.epiphany                      # web browser
@@ -45,11 +39,10 @@
     # gnome-photos                        # default photo app
     # gnome.geary                         # email reader
     # gnome.gnome-contacts
-  ]);
+  ];
 
   # Add the games pack
   services.gnome.games.enable = true;
-  
 
   # Enable GDM and GNOME
   services.xserver = {

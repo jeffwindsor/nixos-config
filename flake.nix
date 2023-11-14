@@ -1,5 +1,5 @@
 {
-  description = "Jeff's NixOS";
+  description = "Nix Sauce";
 
   inputs = {
     nixpkgs.url      = "github:nixos/nixpkgs/nixos-unstable";
@@ -16,32 +16,30 @@
         specialArgs = inputs; 
         system      = "x86_64-linux";
         modules     = [
+          ./host/framework13
+          ./desktop/gnome.nix
 
-          # Host
-          ./host/frame
-          
-          # DE
-          ./modules/gnome.nix
-
-          # User
           {
             time.timeZone = "America/Los_Angeles";
-
             users.users.mid = {
               description  = "The Middle Way";
               extraGroups  = [ "networkmanager" "wheel" ];
               isNormalUser = true;
-              # shell        = pkgs.zsh;
             };
           }
 
-          # Home
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              useGlobalPkgs       = true;
-              useUserPackages     = true;
-              users.mid           = import ./home/mid;
+              useGlobalPkgs     = true;
+              useUserPackages   = true;
+              users.mid = {
+                imports = [ ./home/default.nix ./home/gnome.nix ];
+                home = {
+                  username      = "mid";
+                  homeDirectory = "/home/mid";
+                };
+              };
             };
           }
 

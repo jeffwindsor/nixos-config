@@ -11,4 +11,7 @@
       prettybat
     ];
   };
+  home.shellAliases = {
+    "cat"      = "bat --style=plain";
+  };
 }
