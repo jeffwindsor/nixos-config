@@ -31,13 +31,11 @@
       obsidian          # notes
       popsicle          # usb flasher
       spotify           # music player
-      # thunderbird       # mail
       transmission-gtk  # bit torrent
       vlc               # video player
 
       fd                # find replacement
       fortune           # saying that make my day
-      freshfetch        # neofetch replacement
       # gcc               # c compiler, required for nvim+treesitter
       jq                # json tool
       sd                # sed replacement
