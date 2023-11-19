@@ -24,6 +24,10 @@
   };
 
   home = {
+    # files = {
+    #   ".config/fortune/build.sh" = ;
+    #   ".config/fortune/quotes" = ;
+    # };
     packages = with pkgs; [
       brave             # backup browser
       libreoffice       # office

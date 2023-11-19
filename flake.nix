@@ -20,26 +20,24 @@
           ./desktop/gnome.nix
 
           {
-            time.timeZone = "America/Los_Angeles";
             users.users.mid = {
               description  = "The Middle Way";
               extraGroups  = [ "networkmanager" "wheel" ];
               isNormalUser = true;
             };
+            time.timeZone = "America/Los_Angeles";
           }
 
           home-manager.nixosModules.home-manager
           {
             home-manager = {
+              users.mid = {
+                home.username      = "mid";
+                home.homeDirectory = "/home/mid";
+                imports            = [ ./home/default.nix ./home/gnome.nix ];
+              };
               useGlobalPkgs     = true;
               useUserPackages   = true;
-              users.mid = {
-                imports = [ ./home/default.nix ./home/gnome.nix ];
-                home = {
-                  username      = "mid";
-                  homeDirectory = "/home/mid";
-                };
-              };
             };
           }
 
