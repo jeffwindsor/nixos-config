@@ -44,8 +44,6 @@
     ];
 
     shellAliases = {
-      "f"        = "freshfetch";
-
       # nixos
       "system"   = "cd $LOC_NIXOS && hx .";
       "clean"    = "nix-env --delete-generations +10 && nix-collect-garbage && nix store optimise && flatpak uninstall --unused -y";
@@ -63,6 +61,3 @@
     stateVersion  = "23.11";
   };
 }
-
-
-
