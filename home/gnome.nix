@@ -73,7 +73,18 @@
     "org/gnome/settings-daemon/plugins/media-keys" = {
       calculator = [ "<Super>c" ];
       control-center = [ "<Super>comma" ];
-      custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom8/" ];
+      custom-keybindings = [ 
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" 
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/" 
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/" 
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/" 
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/" 
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/" 
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/" 
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/" 
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom8/" 
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom9/" 
+      ];
       help = [];
       home = [ "<Super>f" ];
       logout = [];
@@ -139,6 +150,12 @@
       binding = "<Super>t";
       command = "env WINIT_UNIX_BACKEND=x11 alacritty";
       name = "Terminal";
+    };
+    
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom9" = {
+      binding = "<Super>m";
+      command = "xdg-open 'https://maps.google.com'";
+      name = "Google Maps";
     };
 
   "org/gnome/shell" = {
