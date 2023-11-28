@@ -33,7 +33,7 @@
       libreoffice       # office
       megasync          # cloud storage
       obsidian          # notes
-      popsicle          # usb flasher
+      # popsicle          # usb flasher
       spotify           # music player
       transmission-gtk  # bit torrent
       vlc               # video player

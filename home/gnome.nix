@@ -124,7 +124,7 @@
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4" = {
       binding = "<Super>o";
-      command = "flatpak run md.obsidian.Obsidian";
+      command = "obsidian";
       name = "Obsidian";
     };
 
@@ -267,9 +267,7 @@
     "org/gnome/shell/keybindings" = {
       focus-active-notification = [];
       open-application-menu = [ "<Alt>1" ];
-      show-screenshot-ui = [ ''
-        {<Control>}grave
-      '' ];
+      show-screenshot-ui = [ "{<Control>}grave" ];
       switch-to-application-1 = [];
       switch-to-application-10 = [];
       switch-to-application-2 = [];
