@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, config, lib, ... }: {
 
   imports = [
     ./hardware-configuration.nix                    # generated hardware config
@@ -46,6 +46,9 @@
   nixpkgs.config.allowUnfree = true;                # PACKAGES: remove unfree check
 
   nix = {
+    # map old school channels and paths to flake versions
+    nixPath  = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
+    registry = mapAttrs (_: value: { flake = value; }) inputs;
     settings = {
       auto-optimise-store   = true;
       experimental-features = [ "nix-command" "flakes" ];
