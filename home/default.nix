@@ -54,8 +54,8 @@
       "list"     = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
       "rebuild"  = "sudo nixos-rebuild switch --flake $LOC_NIXOS";
       "upgrade"  = "nix flake update";
-      "shell"    = "nix-shell --command zsh";
-      "dev"      = "nix develop --command zsh";
+      "shell"    = "nix-shell";
+      "dev"      = "nix-shell";
     };
     sessionVariables = {
       LOC_JEFF    = "$HOME/Source/github.com/jeffwindsor";
