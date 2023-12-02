@@ -1,119 +1,138 @@
-{ pkgs, config, lib, ... }: {
+# Edit this configuration file to define what should be installed on
+# your system.  Help is available in the configuration.nix(5) man page
+# and in the NixOS manual (accessible by running ‘nixos-help’).
 
-  imports = [
-    <home-manager/nixos> 
+{ config, pkgs, ... }:{
+
+  # Include other modules
+  imports = [ 
+    <home-manager/nixos>
     ./desktop/gnome.nix
-    ./home/default.nix
-    ./host/framework13/hardware-configuration.nix                    # generated hardware config
+    ./hardware-configuration.nix                    # Include the results of the hardware scan.
   ];
 
-  users.users.mid = {
-    description  = "The Middle Way";
-    extraGroups  = [ "networkmanager" "wheel" ];
+  # Host and Users
+  networking.hostName    = "framework";
+  time.timeZone          = "America/Los_Angeles";
+  users.users."mid" = {
     isNormalUser = true;
+    description          = "The Middle Way";
+    extraGroups          = [ "networkmanager" "wheel" ];
   };
-  time.timeZone = "America/Los_Angeles";
-
   home-manager = {
     users.mid = {
       home.username      = "mid";
       home.homeDirectory = "/home/mid";
       imports            = [ ./home/default.nix ./home/gnome.nix ];
-      
-      # The state version is required and should stay at the version you
-      # originally installed.
-      home.stateVersion = "23.11";
     };
     useGlobalPkgs     = true;
     useUserPackages   = true;
   };
-  
-  boot = {
-    loader = {
-      systemd-boot = {
-        enable      = true;                         # EFI boot manager
-        configurationLimit = 10;                    # limit to 10 generations
-      };
-      efi.canTouchEfiVariables = true;              # installation can modify EFI boot variables
+
+
+  # Boot loader
+  boot.loader = {
+    systemd-boot = {
+      enable = true;                                # EFI boot manager
+      configurationLimit = 10;                      # limit to 10 generations
     };
-
-    supportedFilesystems = [ "ntfs" ];              # USB Drives might have this format
+    efi.canTouchEfiVariables = true;                # installation can modify EFI boot variables
   };
+  boot.supportedFilesystems = [ "ntfs" ];           # USB Drives might have this format 
+ 
+  # Shells available to all users
+  environment.shells = with pkgs; [ bash nushell ];
 
-  environment = {
-    shells = with pkgs; [                           # List of available shells
-      bash
-      nushell
-    ];
-
-    systemPackages = with pkgs; [
-      cups-brother-hll2350dw                        # home and office printer (2023)
-      fwupd                                         # firmware update service
-      tlp                                           # laptop power mgmt service
-    ];
-  };
-
+  # Packages available to all users
+  environment.systemPackages = with pkgs; [
+    cups-brother-hll2350dw                          # home and office printer (2023)
+    fwupd                                           # firmware update service
+    tlp                                             # laptop power mgmt service
+  ];
+  
+  # Fonts available to all users
   fonts.packages = with pkgs; [
     jetbrains-mono
     lexend
     nerdfonts
   ];
 
-  hardware.pulseaudio.enable = false;               # AUDIO: turn off default pulse audio to use pipewire
-
-  networking= {
-    hostName              = "frame";
-    networkmanager.enable = true;                   # Wifi Manager
-    firewall.enable       = true;
-  };
-
-  nixpkgs.config.allowUnfree = true;                # PACKAGES: remove unfree check
-
-  nix = {
-    # map old school channels and paths to flake versions
-    nixPath  = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
-    # registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
-    settings = {
-      auto-optimise-store   = true;
-      experimental-features = [ "nix-command" "flakes" ];
-    };
-
-    gc = {                                          # GARBAGE COLLECTION: https://nixos.wiki/wiki/Storage_optimization#Automation
-      automatic = true;
-      dates     = "weekly";
-      options   = "--delete-older-than 7d";
+  # Internationalisation
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "en_US.UTF-8";
+      LC_IDENTIFICATION = "en_US.UTF-8";
+      LC_MEASUREMENT = "en_US.UTF-8";
+      LC_MONETARY = "en_US.UTF-8";
+      LC_NAME = "en_US.UTF-8";
+      LC_NUMERIC = "en_US.UTF-8";
+      LC_PAPER = "en_US.UTF-8";
+      LC_TELEPHONE = "en_US.UTF-8";
+      LC_TIME = "en_US.UTF-8";
     };
   };
 
-  programs.zsh.enable = true;                       # ZSH
+  # Networking 
+  networking.networkmanager.enable = true;
 
-  security.rtkit.enable = true;                     # AUDIO: used by pipewire
-
-  services = {
-    avahi = {                                       # PRINTING: service discovery on a local network
-      enable       = true;
-      nssmdns      = true;
-      openFirewall = true;                          # Wifi printing
-    };
-
-    flatpak.enable = true;                          # FLATPAK: user installeble
-
-    pipewire = {                                    # AUDIO: sound services
-      enable            = true;
-      alsa.enable       = true;
-      alsa.support32Bit = true;
-      pulse.enable      = true;
-    };
-
-    printing = {
-      enable  = true;
-      drivers = [ pkgs.cups-brother-hll2350dw ];
-    };
-
+  # Package Managers
+  nix.settings.auto-optimise-store = true;          # automatic optimization
+  nix.gc = {                                        # automatic garbage collection, weekly for older than 30 days
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+  nixpkgs.config.allowUnfree = true;                # allow unfree packages in nix
+  services.flatpak.enable = true;                   # enable flatpak usage
+  
+  # Enable the X11 windowing system
+  services.xserver = {
+    enable = true;
+    layout = "us";                                  # Configure keymap in X11
+    xkbVariant = "";
   };
 
-  system = {
-    autoUpgrade.enable = true;
-    stateVersion       = "23.11";
+  # Enable printing
+  services.printing = {
+    enable  = true;
+    drivers = [ 
+      pkgs.cups-brother-hll2350dw                   # personal wifi printer 
+    ];
   };
+  
+  # Enable printing service discovery on a local network
+  services.avahi = {                              
+    enable       = true;
+    nssmdns      = true;
+    openFirewall = true;                            # Wifi printing
+  };
+
+  # Enable sound with pipewire.
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+
+    # use the example session manager (no others are packaged yet so this is enabled by default,
+    # no need to redefine it in your config for now)
+    #media-session.enable = true;
+  };
+  sound.enable = true;
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+
+
+
+  # This value determines the NixOS release from which the default
+  # settings for stateful data, like file locations and database versions
+  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # this value at the release version of the first install of this system.
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "23.11"; # Did you read the comment?
+
 }
