@@ -1,9 +1,33 @@
 { pkgs, config, lib, ... }: {
 
   imports = [
-    ./hardware-configuration.nix                    # generated hardware config
+    <home-manager/nixos> 
+    ./desktop/gnome.nix
+    ./home/default.nix
+    ./host/framework13/hardware-configuration.nix                    # generated hardware config
   ];
 
+  users.users.mid = {
+    description  = "The Middle Way";
+    extraGroups  = [ "networkmanager" "wheel" ];
+    isNormalUser = true;
+  };
+  time.timeZone = "America/Los_Angeles";
+
+  home-manager = {
+    users.mid = {
+      home.username      = "mid";
+      home.homeDirectory = "/home/mid";
+      imports            = [ ./home/default.nix ./home/gnome.nix ];
+      
+      # The state version is required and should stay at the version you
+      # originally installed.
+      home.stateVersion = "23.11";
+    };
+    useGlobalPkgs     = true;
+    useUserPackages   = true;
+  };
+  
   boot = {
     loader = {
       systemd-boot = {
