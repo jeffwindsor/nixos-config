@@ -37,6 +37,10 @@
       unmaximize = [];
     };
 
+    "/org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+    };
+    
     "org/gnome/desktop/wm/preferences" = {
       button-layout = "close:appmenu";
       num-workspaces = 10;
