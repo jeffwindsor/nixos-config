@@ -52,8 +52,8 @@
       "system"   = "cd $LOC_NIXOS && hx .";
       "clean"    = "nix-env --delete-generations +10 && nix-collect-garbage && nix store optimise && flatpak uninstall --unused -y";
       "list"     = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
-      "rebuild"  = "sudo nixos-rebuild switch --flake $LOC_NIXOS";
-      "upgrade"  = "nix flake update";
+      "rebuild"  = "sudo nixos-rebuild switch";
+      "upgrade"  = "sudo nix-channel --update";
       "shell"    = "nix-shell";
       "dev"      = "nix-shell";
     };

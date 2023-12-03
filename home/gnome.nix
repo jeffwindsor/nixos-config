@@ -271,7 +271,7 @@
     "org/gnome/shell/keybindings" = {
       focus-active-notification = [];
       open-application-menu = [ "<Alt>1" ];
-      show-screenshot-ui = [ "{<Control>}grave" ];
+      show-screenshot-ui = [ "<Control>grave" ];
       switch-to-application-1 = [];
       switch-to-application-10 = [];
       switch-to-application-2 = [];
