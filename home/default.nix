@@ -43,6 +43,7 @@
       fd                # find replacement
       fortune           # saying that make my day
       # gcc               # c compiler, required for nvim+treesitter
+      just              # run project-specific commands, like make
       jq                # json tool
       sd                # sed replacement
       xh                # curl replacement
