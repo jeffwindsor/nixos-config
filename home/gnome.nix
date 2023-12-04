@@ -1,6 +1,89 @@
 # Generated via dconf2nix: https://github.com/gvolpe/dconf2nix
-{ lib, ... }: with lib.hm.gvariant; {
+{ lib, ... }:
+
+with lib.hm.gvariant;
+
+{
   dconf.settings = {
+    "com/mattjakeman/ExtensionManager" = {
+      last-used-version = "0.4.2";
+    };
+
+    "org/gnome/Console" = {
+      audible-bell = false;
+      custom-font = "DejaVu Sans Mono 16";
+      last-window-size = mkTuple [ 652 480 ];
+      use-system-font = false;
+      visual-bell = false;
+    };
+
+    "org/gnome/calculator" = {
+      accuracy = 9;
+      angle-units = "degrees";
+      base = 10;
+      button-mode = "advanced";
+      number-format = "automatic";
+      show-thousands = false;
+      show-zeroes = false;
+      source-currency = "";
+      source-units = "degree";
+      target-currency = "";
+      target-units = "radian";
+      window-maximized = false;
+      window-size = mkTuple [ 680 584 ];
+      word-size = 64;
+    };
+
+    "org/gnome/control-center" = {
+      last-panel = "bluetooth";
+      window-state = mkTuple [ 1908 2144 false ];
+    };
+
+    "org/gnome/desktop/app-folders" = {
+      folder-children = [ "Utilities" "YaST" "Pardus" ];
+    };
+
+    "org/gnome/desktop/app-folders/folders/Pardus" = {
+      categories = [ "X-Pardus-Apps" ];
+      name = "X-Pardus-Apps.directory";
+      translate = true;
+    };
+
+    "org/gnome/desktop/app-folders/folders/Utilities" = {
+      apps = [ "gnome-abrt.desktop" "gnome-system-log.desktop" "nm-connection-editor.desktop" "org.gnome.baobab.desktop" "org.gnome.Connections.desktop" "org.gnome.DejaDup.desktop" "org.gnome.Dictionary.desktop" "org.gnome.DiskUtility.desktop" "org.gnome.Evince.desktop" "org.gnome.FileRoller.desktop" "org.gnome.fonts.desktop" "org.gnome.Loupe.desktop" "org.gnome.seahorse.Application.desktop" "org.gnome.tweaks.desktop" "org.gnome.Usage.desktop" "vinagre.desktop" ];
+      categories = [ "X-GNOME-Utilities" ];
+      name = "X-GNOME-Utilities.directory";
+      translate = true;
+    };
+
+    "org/gnome/desktop/app-folders/folders/YaST" = {
+      categories = [ "X-SuSE-YaST" ];
+      name = "suse-yast.directory";
+      translate = true;
+    };
+
+    "org/gnome/desktop/input-sources" = {
+      sources = [ (mkTuple [ "xkb" "us" ]) ];
+      xkb-options = [ "terminate:ctrl_alt_bksp" ];
+    };
+
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+      enable-animations = true;
+    };
+
+    "org/gnome/desktop/notifications" = {
+      application-children = [ "gnome-power-panel" "firefox" ];
+    };
+
+    "org/gnome/desktop/notifications/application/firefox" = {
+      application-id = "firefox.desktop";
+    };
+
+    "org/gnome/desktop/notifications/application/gnome-power-panel" = {
+      application-id = "gnome-power-panel.desktop";
+    };
+
     "org/gnome/desktop/wm/keybindings" = {
       begin-move = [];
       begin-resize = [];
@@ -37,13 +120,13 @@
       unmaximize = [];
     };
 
-    "/org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
-    };
-    
     "org/gnome/desktop/wm/preferences" = {
       button-layout = "close:appmenu";
       num-workspaces = 10;
+    };
+
+    "org/gnome/evolution-data-server" = {
+      migrated = true;
     };
 
     "org/gnome/mutter" = {
@@ -77,18 +160,7 @@
     "org/gnome/settings-daemon/plugins/media-keys" = {
       calculator = [ "<Super>c" ];
       control-center = [ "<Super>comma" ];
-      custom-keybindings = [ 
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" 
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/" 
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/" 
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/" 
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/" 
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/" 
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/" 
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/" 
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom8/" 
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom9/" 
-      ];
+      custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom8/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom9/" ];
       help = [];
       home = [ "<Super>f" ];
       logout = [];
@@ -155,16 +227,17 @@
       command = "env WINIT_UNIX_BACKEND=x11 alacritty";
       name = "Terminal";
     };
-    
+
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom9" = {
       binding = "<Super>m";
       command = "xdg-open 'https://maps.google.com'";
       name = "Google Maps";
     };
 
-  "org/gnome/shell" = {
+    "org/gnome/shell" = {
       command-history = [ "r" ];
       enabled-extensions = [ "launch-new-instance@gnome-shell-extensions.gcampax.github.com" "openweather-extension@jenslody.de" "forge@jmmaranan.com" "blur-my-shell@aunetx" "WallpaperSwitcher@Rishu" "appindicatorsupport@rgcjonas.gmail.com" "just-perfection-desktop@just-perfection" "pano@elhan.io" "caffeine@patapon.info" ];
+      welcome-dialog-last-shown-version = "45.1";
     };
 
     "org/gnome/shell/extensions/WallpaperSwitcher" = {
@@ -174,14 +247,14 @@
     };
 
     "org/gnome/shell/extensions/caffeine" = {
-      indicator-position-max = 2;
+      indicator-position-max = 1;
       toggle-shortcut = [ "<Super>Delete" ];
     };
 
     "org/gnome/shell/extensions/executor" = {
       center-active = false;
       left-commands-json = ''
-        {"commands":[{"isActive":true,"command":"fortune /home/mid/.config/fortune/quotes","interval":600,"uuid":"e029a6a2-3ba2-424b-bcc3-bf74d39fe75a"}]}
+        {"commands":[{"isActive":true,"command":"fortune /home/mid/.config/fortune/quotes","interval":600,"uuid":"e029a6a2-3ba2-424b-bcc3-bf74d39fe75a"}]}\n
       '';
       left-index = 3;
       right-active = false;
@@ -190,6 +263,8 @@
     "org/gnome/shell/extensions/forge" = {
       css-last-update = mkUint32 37;
       focus-border-toggle = true;
+      quick-settings-enabled = true;
+      stacked-tiling-mode-enabled = true;
       window-gap-hidden-on-single = true;
       window-gap-size = 2;
       window-gap-size-increment = 4;
@@ -218,16 +293,17 @@
       window-focus-left = [ "<Super>h" ];
       window-focus-right = [ "<Super>l" ];
       window-focus-up = [ "<Super>k" ];
-      window-gap-size-decrease = ["<Super><Control><Alt>minus"];
-      window-gap-size-increase = ["<Super><Control><Alt>plus"];
+      window-gap-size-decrease = [ "<Super><Control><Alt>minus" ];
+      window-gap-size-increase = [ "<Super><Control><Alt>plus" ];
       window-move-down = [ "<Super><Control><Alt>j" ];
       window-move-left = [ "<Super><Control><Alt>h" ];
       window-move-right = [ "<Super><Control><Alt>l" ];
       window-move-up = [ "<Super><Control><Alt>k" ];
       window-resize-bottom-decrease = [];
       window-resize-bottom-increase = [];
-      window-resize-left-decrease = ["<Super><Control>minus"];
-      window-resize-left-increase = ["<Super><Control>plus"];
+      window-resize-left-decrease = [ "<Super><Control>minus" ];
+      window-resize-left-increase = [ "<Super><Control>plus" ];
+      window-resize-right-decrease = [ "<Shift><Control><Super>y" ];
       window-resize-right-increase = [];
       window-resize-top-decrease = [];
       window-resize-top-increase = [];
@@ -271,7 +347,9 @@
     "org/gnome/shell/keybindings" = {
       focus-active-notification = [];
       open-application-menu = [ "<Alt>1" ];
-      show-screenshot-ui = [ "<Control>grave" ];
+      show-screenshot-ui = [ ''
+        {<Control>}grave
+      '' ];
       switch-to-application-1 = [];
       switch-to-application-10 = [];
       switch-to-application-2 = [];
@@ -285,6 +363,31 @@
       toggle-application-view = [ "<Super>a" ];
       toggle-message-tray = [];
       toggle-overview = [];
+    };
+
+    "org/gnome/shell/world-clocks" = {
+      locations = [];
+    };
+
+    "org/gnome/software" = {
+      check-timestamp = mkInt64 1701704424;
+      first-run = false;
+      flatpak-purge-timestamp = mkInt64 1701657996;
+    };
+
+    "org/gtk/settings/file-chooser" = {
+      date-format = "regular";
+      location-mode = "path-bar";
+      show-hidden = false;
+      show-size-column = true;
+      show-type-column = true;
+      sidebar-width = 157;
+      sort-column = "name";
+      sort-directories-first = false;
+      sort-order = "ascending";
+      type-format = "category";
+      window-position = mkTuple [ 26 23 ];
+      window-size = mkTuple [ 1231 902 ];
     };
 
   };
