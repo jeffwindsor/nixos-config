@@ -29,6 +29,7 @@
     #   ".config/fortune/quotes" = ;
     # };
     packages = with pkgs; [
+      ### GUI ###
       brave             # backup browser
       libreoffice       # office
       megasync          # cloud storage
@@ -37,7 +38,8 @@
       spotify           # music player
       transmission-gtk  # bit torrent
       vlc               # video player
-
+      
+      ### TUI ###
       fd                # find replacement
       fortune           # saying that make my day
       # gcc               # c compiler, required for nvim+treesitter
@@ -55,13 +57,14 @@
       "rebuild"  = "sudo nixos-rebuild switch";
       "upgrade"  = "sudo nix-channel --update";
       "shell"    = "nix-shell";
-      "dev"      = "nix-shell";
     };
+    
     sessionVariables = {
       LOC_JEFF    = "$HOME/Source/github.com/jeffwindsor";
       LOC_NIXOS   = "$HOME/Source/github.com/jeffwindsor/nixos-config";
       LOC_SRC     = "$HOME/Source";
     };
+    
     stateVersion  = "23.11";
   };
 }

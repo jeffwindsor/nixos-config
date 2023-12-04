@@ -78,6 +78,20 @@
         select = { 
           # auto save on returning to normal mode
           esc = ["collapse_selection" "normal_mode" ":write"]; 
+          
+          # Switch case of the selected text
+          "`" = "switch_case";
+        
+          # vim like line movement
+          "^" = "goto_line_start";
+          "$" = "goto_line_end";
+
+          # vim like yank + yank to clipboard
+          y = ["yank_main_selection_to_clipboard" "yank"];
+
+          # vim like delete
+          x = "delete_selection";
+          
         };
         normal = {
           # windows
@@ -97,23 +111,17 @@
         
           # vim like append
           # a = ["append_mode" "collapse_selection"];
-
-          # delete line
-          # D = ["select_mode" "extend_to_line_bounds" "delete_selection"];
-        
+       
           # vim like insert
           # i = ["insert_mode" "collapse_selection"];
-        
-          # open lines but return to normal mode
-          # o = ["open_below" "normal_mode"];
-          # O = ["open_above" "normal_mode"];
+      
 
           # vim like line select
-          V = ["select_mode" "extend_to_line_bounds"];
+          V = ["goto_line_start" "select_mode" "extend_to_line_bounds"];
         
           # vim like yank + yank to clipboard
           y = ["yank_main_selection_to_clipboard" "yank"];
-          Y = ["select_mode" "extend_to_line_bounds" "yank_main_selection_to_clipboard" "yank"];
+          Y = ["goto_line_start" "select_mode" "extend_to_line_bounds" "yank_main_selection_to_clipboard" "yank"];
 
           # vim like delete
           x = "delete_selection";
