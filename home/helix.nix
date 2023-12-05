@@ -1,9 +1,10 @@
 { pkgs, ... }: {
   
   home.shellAliases = {
+    # 50% shorter "=^)
     "h"        = "hx";
   };
-  
+
   programs.helix= {
     enable = true;
     defaultEditor = true;

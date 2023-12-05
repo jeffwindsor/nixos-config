@@ -1,4 +1,13 @@
 { pkgs, ... }: {
+  
+	home.sessionVariables = {
+  	PREVIEWER = "bat --style=numbers --color=always";
+  };
+  
+  home.shellAliases = {
+    "cat"      = "bat --style=plain";
+  };
+  
   programs.bat = {
     enable = true;
     config.theme = "base16";
@@ -10,8 +19,5 @@
       batwatch
       prettybat
     ];
-  };
-  home.shellAliases = {
-    "cat"      = "bat --style=plain";
   };
 }
