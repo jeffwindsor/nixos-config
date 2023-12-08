@@ -5,10 +5,6 @@ with lib.hm.gvariant;
 
 {
   dconf.settings = {
-    "com/mattjakeman/ExtensionManager" = {
-      last-used-version = "0.4.2";
-    };
-
     "org/gnome/Console" = {
       audible-bell = false;
       custom-font = "DejaVu Sans Mono 16";
@@ -32,39 +28,6 @@ with lib.hm.gvariant;
       window-maximized = false;
       window-size = mkTuple [ 680 584 ];
       word-size = 64;
-    };
-
-    "org/gnome/control-center" = {
-      last-panel = "bluetooth";
-      window-state = mkTuple [ 1908 2144 false ];
-    };
-
-    "org/gnome/desktop/app-folders" = {
-      folder-children = [ "Utilities" "YaST" "Pardus" ];
-    };
-
-    "org/gnome/desktop/app-folders/folders/Pardus" = {
-      categories = [ "X-Pardus-Apps" ];
-      name = "X-Pardus-Apps.directory";
-      translate = true;
-    };
-
-    "org/gnome/desktop/app-folders/folders/Utilities" = {
-      apps = [ "gnome-abrt.desktop" "gnome-system-log.desktop" "nm-connection-editor.desktop" "org.gnome.baobab.desktop" "org.gnome.Connections.desktop" "org.gnome.DejaDup.desktop" "org.gnome.Dictionary.desktop" "org.gnome.DiskUtility.desktop" "org.gnome.Evince.desktop" "org.gnome.FileRoller.desktop" "org.gnome.fonts.desktop" "org.gnome.Loupe.desktop" "org.gnome.seahorse.Application.desktop" "org.gnome.tweaks.desktop" "org.gnome.Usage.desktop" "vinagre.desktop" ];
-      categories = [ "X-GNOME-Utilities" ];
-      name = "X-GNOME-Utilities.directory";
-      translate = true;
-    };
-
-    "org/gnome/desktop/app-folders/folders/YaST" = {
-      categories = [ "X-SuSE-YaST" ];
-      name = "suse-yast.directory";
-      translate = true;
-    };
-
-    "org/gnome/desktop/input-sources" = {
-      sources = [ (mkTuple [ "xkb" "us" ]) ];
-      xkb-options = [ "terminate:ctrl_alt_bksp" ];
     };
 
     "org/gnome/desktop/interface" = {
@@ -123,10 +86,6 @@ with lib.hm.gvariant;
     "org/gnome/desktop/wm/preferences" = {
       button-layout = "close:appmenu";
       num-workspaces = 10;
-    };
-
-    "org/gnome/evolution-data-server" = {
-      migrated = true;
     };
 
     "org/gnome/mutter" = {
@@ -347,9 +306,7 @@ with lib.hm.gvariant;
     "org/gnome/shell/keybindings" = {
       focus-active-notification = [];
       open-application-menu = [ "<Alt>1" ];
-      show-screenshot-ui = [ ''
-        {<Control>}grave
-      '' ];
+      show-screenshot-ui = [ "<Control>grave" ];
       switch-to-application-1 = [];
       switch-to-application-10 = [];
       switch-to-application-2 = [];

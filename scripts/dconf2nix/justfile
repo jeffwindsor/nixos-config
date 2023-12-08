@@ -1,0 +1,3 @@
+# dump dconf from within shell
+default:
+	nix-shell -p dconf2nix --run 'dconf dump / | dconf2nix > dconf.nix'
