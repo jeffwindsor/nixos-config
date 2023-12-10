@@ -12,6 +12,19 @@
     extraPackages = with pkgs; [
       nil                          # nix language server
     ];
+
+    languages = {
+      language = [
+        {
+          name = "python";
+          # replace indent tabs
+          indent = { 
+            tab-width = 4; 
+            unit = "  ";
+          };
+        }
+      ];
+    };
   
     settings = {
       theme = "kanagawa";    # molokai github_dark_high_contrast kanagawa sonokai base16_transparent
