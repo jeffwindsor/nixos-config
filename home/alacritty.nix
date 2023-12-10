@@ -9,7 +9,7 @@
       font = {
         # normal.family = "FiraCode Nerd Font Mono";
         normal.family = "JetBrainsMono Nerd Font";
-        size = 14;
+        size = 16;
         draw_bold_text_with_bright_colors = true;
       };
       
