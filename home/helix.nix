@@ -12,17 +12,11 @@
     extraPackages = with pkgs; [
       nil                          # nix language server
     ];
-
+  
     languages = {
       language = [
-        {
-          name = "python";
-          # replace indent tabs
-          indent = { 
-            tab-width = 4; 
-            unit = "  ";
-          };
-        }
+        { name = "python"; indent = {  tab-width = 4;  unit = " "; };}
+        { name = "nix"; indent = {  tab-width = 4;  unit = " "; };}
       ];
     };
   
