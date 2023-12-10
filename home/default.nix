@@ -52,6 +52,7 @@
 
     shellAliases = {
       # nixos
+      "nixos"    = "cd $LOC_NIXOS";
       "system"   = "cd $LOC_NIXOS && hx .";
       "clean"    = "nix-env --delete-generations +10 && nix-collect-garbage && nix store optimise && flatpak uninstall --unused -y";
       "list"     = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
