@@ -30,7 +30,13 @@ with lib.hm.gvariant;
       word-size = 64;
     };
 
+    "org/gnome/desktop/calendar" = {
+      show-weekdate = true;
+    };
+    
     "org/gnome/desktop/interface" = {
+      clock-show-weekday = true;
+      clock-format = "12h";
       color-scheme = "prefer-dark";
       enable-animations = true;
     };
@@ -333,6 +339,7 @@ with lib.hm.gvariant;
     };
 
     "org/gtk/settings/file-chooser" = {
+      clock-format = "12h";
       date-format = "regular";
       location-mode = "path-bar";
       show-hidden = false;
