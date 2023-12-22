@@ -1,7 +1,6 @@
 # Personal NixOS Configuration
 
 
-
 ## Helpful Links and Tools
 
 * [nixos pkg search](https://search.nixos.org/packages)
