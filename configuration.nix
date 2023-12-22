@@ -2,7 +2,15 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:{
+{ config, pkgs, ... }:
+
+{
+  # 2023-12-18 : temporary add to get past build issues, should resolve over time
+  #  some package needs to be updated so this dependency is fixed
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-25.9.0"
+  ];
+
 
   # Include other modules
   imports = [ 
@@ -23,7 +31,7 @@
     users.mid = {
       home.username      = "mid";
       home.homeDirectory = "/home/mid";
-      imports            = [ ./home/default.nix ./home/gnome.nix ];
+      imports            = [ ./home.nix ./home/dconf-org-gnome.nix ];
     };
     useGlobalPkgs     = true;
     useUserPackages   = true;

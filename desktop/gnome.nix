@@ -9,20 +9,21 @@
     gnome.seahorse                      # manage encryption keys and passwords in the GnomeKeyring
 
     #### gnome extensions #####
-    gnomeExtensions.appindicator        # shows old-school icons in tray (some programs need this, like mega sync)
+    gnomeExtensions.appindicator         # shows old-school icons in tray (some programs need this, like mega sync)
     #gnomeExtensions.auto-move-windows   # allow the forever assignment of application to a specific desktop
-    gnomeExtensions.blur-my-shell       # add some modern blurrrr to the de
-    gnomeExtensions.caffeine            # stay awake
+    gnomeExtensions.blur-my-shell        # add some modern blurrrr to the de
+    gnomeExtensions.caffeine             # stay awake
     #gnomeExtensions.clipman             # clipboard manager for taskbar
     #gnomeExtensions.color-picker        # Simple color picker for gnome shell
     #gnomeExtensions.executor            # command output to taskbar: very powerful but I only use it for fortune quotes
-    gnomeExtensions.forge               # tiling window manager
-    gnomeExtensions.just-perfection     # tweaks to gnome visuals
-    gnomeExtensions.launch-new-instance # when launching apps create a new instance, helps with closing only current window not all windows
-    gnomeExtensions.openweather         # weather in the taskbar
+    gnomeExtensions.forge                # tiling window manager
+    gnomeExtensions.just-perfection      # tweaks to gnome visuals
+    gnomeExtensions.launch-new-instance  # when launching apps create a new instance, helps with closing only current window not all windows
+    gnomeExtensions.weather-or-not       # weather in the taskbar
     #gnomeExtensions.pano                # Next-gen Clipboard manager for Gnome Shell
     #gnomeExtensions.space-bar           # display of workspace indicators (like i3)
-    gnomeExtensions.wallpaper-switcher  # auto switch wallpapers
+    gnomeExtensions.wallpaper-slideshow  # auto switch wallpapers
+    #gnomeExtensions.wallpaper-switcher  # auto switch wallpapers
   ];
 
   # Exclude Packages from Gnome Derivation I do not need

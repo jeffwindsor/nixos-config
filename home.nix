@@ -1,19 +1,19 @@
 { pkgs,  ... }: {
 
   imports = [ 
-    ./alacritty.nix
-    ./bash.nix
-    ./bat.nix
-    ./eza.nix
-    ./fzf.nix
-    ./git.nix
-    ./helix.nix
-    ./hledger.nix
-    ./lf.nix
-    ./ripgrep.nix
-    ./starship.nix
-    ./tealdeer.nix
-    ./zellij.nix
+    ./home/alacritty.nix
+    ./home/bash.nix
+    ./home/bat.nix
+    ./home/eza.nix
+    ./home/fzf.nix
+    ./home/git.nix
+    ./home/helix.nix
+    ./home/hledger.nix
+    ./home/lf.nix
+    ./home/ripgrep.nix
+    ./home/starship.nix
+    ./home/tealdeer.nix
+    ./home/zellij.nix
   ];
 
   programs = {
