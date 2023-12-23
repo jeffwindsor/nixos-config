@@ -3,7 +3,13 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
-
+let 
+  hostname       = "framework";
+  locale         = "en_US.UTF-8";
+  timezone       = "America/Los_Angeles";
+  username       = "mid";
+  userDescription = "The Middle Way";
+in
 {
   # 2023-12-18 : temporary add to get past build issues, should resolve over time
   #  some package needs to be updated so this dependency is fixed
@@ -20,18 +26,21 @@
   ];
 
   # Host and Users
-  networking.hostName    = "framework";
-  time.timeZone          = "America/Los_Angeles";
-  users.users."mid" = {
+  networking.hostName = hostname;
+  time.timeZone = timezone;
+  users.users."${username}" = {
     isNormalUser = true;
-    description          = "The Middle Way";
-    extraGroups          = [ "networkmanager" "wheel" ];
+    description = userDescription;
+    extraGroups = [ "networkmanager" "wheel" ];
   };
   home-manager = {
     users.mid = {
-      home.username      = "mid";
-      home.homeDirectory = "/home/mid";
-      imports            = [ ./home.nix ./home/dconf-org-gnome.nix ];
+      home.username = username;
+      home.homeDirectory = "/home/${username}";
+      imports = [ 
+        ./home.nix 
+        ./home/dconf-org-gnome.nix 
+      ];
     };
     useGlobalPkgs     = true;
     useUserPackages   = true;
@@ -67,17 +76,17 @@
 
   # Internationalisation
   i18n = {
-    defaultLocale = "en_US.UTF-8";
+    defaultLocale = locale;
     extraLocaleSettings = {
-      LC_ADDRESS = "en_US.UTF-8";
-      LC_IDENTIFICATION = "en_US.UTF-8";
-      LC_MEASUREMENT = "en_US.UTF-8";
-      LC_MONETARY = "en_US.UTF-8";
-      LC_NAME = "en_US.UTF-8";
-      LC_NUMERIC = "en_US.UTF-8";
-      LC_PAPER = "en_US.UTF-8";
-      LC_TELEPHONE = "en_US.UTF-8";
-      LC_TIME = "en_US.UTF-8";
+      LC_ADDRESS = locale;
+      LC_IDENTIFICATION = locale;
+      LC_MEASUREMENT = locale;
+      LC_MONETARY = locale;
+      LC_NAME = locale;
+      LC_NUMERIC = locale;
+      LC_PAPER = locale;
+      LC_TELEPHONE = locale;
+      LC_TIME = locale;
     };
   };
 
