@@ -201,7 +201,7 @@ with lib.hm.gvariant;
 
     "org/gnome/shell" = {
       command-history = [ "r" ];
-      enabled-extensions = [ "launch-new-instance@gnome-shell-extensions.gcampax.github.com" "openweather-extension@jenslody.de" "forge@jmmaranan.com" "blur-my-shell@aunetx" "WallpaperSwitcher@Rishu" "appindicatorsupport@rgcjonas.gmail.com" "just-perfection-desktop@just-perfection" "pano@elhan.io" "caffeine@patapon.info" ];
+      enabled-extensions = ["launch-new-instance@gnome-shell-extensions.gcampax.github.com" "openweather-extension@jenslody.de" "forge@jmmaranan.com" "blur-my-shell@aunetx" "WallpaperSwitcher@Rishu" "appindicatorsupport@rgcjonas.gmail.com" "just-perfection-desktop@just-perfection" "pano@elhan.io" "caffeine@patapon.info" "weatherornot@somepaulo.github.io" "azwallpaper@azwallpaper.gitlab.com"];
       welcome-dialog-last-shown-version = "45.1";
     };
 
@@ -333,9 +333,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/software" = {
-      check-timestamp = mkInt64 1701704424;
       first-run = false;
-      flatpak-purge-timestamp = mkInt64 1701657996;
     };
 
     "org/gtk/settings/file-chooser" = {
