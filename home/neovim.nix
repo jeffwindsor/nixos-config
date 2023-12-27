@@ -1,4 +1,12 @@
 { pkgs, ... }: {
+
+  home.shellAliases = {
+    # 75% shorter "=^)
+    "v"        = "nvim";
+  };
+  
+  home.packages = with pkgs; [ gcc ];
+  
   programs.neovim = {
     enable = true;
     # defaultEditor = true;

@@ -8,6 +8,7 @@
     ./home/eza.nix
     ./home/fzf.nix
     ./home/git.nix
+    ./home/neovim.nix
     ./home/helix.nix
     ./home/hledger.nix
     ./home/lf.nix
