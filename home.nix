@@ -2,7 +2,6 @@
 
   # applications with configuration 
   imports = [ 
-    ./home/alacritty.nix
     ./home/bash.nix
     ./home/bat.nix
     ./home/eza.nix
@@ -15,6 +14,7 @@
     ./home/ripgrep.nix
     ./home/starship.nix
     ./home/tealdeer.nix
+    ./home/wezterm.nix
     ./home/zellij.nix
   ];
 
