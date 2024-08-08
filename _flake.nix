@@ -1,50 +1,40 @@
 {
-  description = "Nix Sauce";
+  description = "Personal Entry Point for NixOS, Nix Darwin and Home Manager";
 
-  inputs = {
-    nixpkgs.url      = "github:nixos/nixpkgs/nixos-23.11";
-    home-manager.url = "github:nix-community/home-manager/release-23.11";
-    # home-manager.inputs.nixpkgs.follows = "nixpkgs";
+  inputs = { 
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nix-darwin.url = "github:LnL7/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
+  outputs = { self, ...}@inputs:
   {
-    nixosConfigurations = {
-      
-      # framework 13 laptop - gnome w/ user "mid"
-      frame = nixpkgs.lib.nixosSystem {
-        specialArgs = inputs; 
-        system      = "x86_64-linux";
-        modules     = [
-          ./host/framework13
-          ./desktop/gnome.nix
-
-          {
-            users.users.mid = {
-              description  = "The Middle Way";
-              extraGroups  = [ "networkmanager" "wheel" ];
-              isNormalUser = true;
-            };
-            time.timeZone = "America/Los_Angeles";
-          }
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              users.mid = {
-                home.username      = "mid";
-                home.homeDirectory = "/home/mid";
-                imports            = [ ./home/default.nix ./home/gnome.nix ];
-              };
-              useGlobalPkgs     = true;
-              useUserPackages   = true;
-            };
-          }
-
+    # Build darwin flake using: darwin-rebuild build --flake ~/.config/nix/
+    darwinConfigurations = 
+    let 
+      inherit (inputs.nix-darwin.lib) darwinSystem;
+      inherit (inputs.home-manager.darwinModules) home-manager;
+    in {
+      "Midnight-Air" = darwinSystem {
+        system = "aarch64-darwin";
+        modules = [ 
+          ./darwin.nix 
+          # home-manager {
+          #   home-manager = {
+          #     useGlobalPkgs = true;
+          #     useUserPackages = true;
+          #     verbose = true;
+          #     backupFileExtension = "backup";
+          #     users.jeffwindsor = import ./home.nix; 
+          #   };
+          # }
         ];
       };
     };
+
+    # Expose the package set, including overlays, for convenience.
+    # darwinPackages = self.darwinConfigurations."Midnight-Air".pkgs;
   };
-
 }
-
