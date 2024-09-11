@@ -1,8 +1,21 @@
 { config, pkgs, ... }:{
 
-  services.xserver.windowManager.qtile.enable = true;
+  services.xserver.windowManager.qtile = {
+    enable = true;
+
+    # qtile python environment packages
+    #extraPackages = python3Packages: with python3Packages; [
+    #  qtile-extras
+    #];
+
+  };
 
   environment.systemPackages = with pkgs; [
-    dmenu
+    rofi
+    pywal
+    gcc
+    keychain
+    kanshi
+    wallutils
   ];
 }

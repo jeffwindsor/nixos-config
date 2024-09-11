@@ -13,15 +13,12 @@ in
 {
   # 2023-12-18 : temporary add to get past build issues, should resolve over time
   #  some package needs to be updated so this dependency is fixed
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-25.9.0"
-  ];
-
+  # nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
 
   # Include other modules
-  imports = [ 
-    <home-manager/nixos>
-    ./desktop/gnome.nix
+  imports = [
+    ./desktop/qtile.nix
+    ./programs/zsh.nix
     ./hardware-configuration.nix                    # Include the results of the hardware scan.
   ];
 
@@ -33,19 +30,6 @@ in
     description = userDescription;
     extraGroups = [ "networkmanager" "wheel" ];
   };
-  home-manager = {
-    users.mid = {
-      home.username = username;
-      home.homeDirectory = "/home/${username}";
-      imports = [ 
-        ./home.nix 
-        ./home/dconf-org-gnome.nix 
-      ];
-    };
-    useGlobalPkgs     = true;
-    useUserPackages   = true;
-  };
-
 
   # Boot loader
   boot.loader = {
@@ -56,14 +40,37 @@ in
     efi.canTouchEfiVariables = true;                # installation can modify EFI boot variables
   };
   boot.supportedFilesystems = [ "ntfs" ];           # USB Drives might have this format 
- 
-  # Shells available to all users
-  environment.shells = with pkgs; [ bash nushell ];
 
   # Packages available to all users
   environment.systemPackages = with pkgs; [
+    bash
+    bat               # cat replacement
+    delta             # git pager
+    eza               # ls replacement
+    fastfetch
+    fd
+    fzf
+    git
+    lazygit
+    neovim
+    ripgrep
+    sd
+    starship          # prompt
+    stow              # dot file manager
+    tldr
+    yazi              # terminal file manager
+    zellij            # multiplexer
+    zoxide
+
+    #alacritty
+    wezterm
+    #qbittorrent
+    firefox
+    vlc
+
     cups-brother-hll2350dw                          # home and office printer (2023)
     fwupd                                           # firmware update service
+    pciutils
     tlp                                             # laptop power mgmt service
   ];
   
@@ -101,13 +108,12 @@ in
     options = "--delete-older-than 30d";
   };
   nixpkgs.config.allowUnfree = true;                # allow unfree packages in nix
-  services.flatpak.enable = true;                   # enable flatpak usage
   
   # Enable the X11 windowing system
   services.xserver = {
     enable = true;
-    layout = "us";                                  # Configure keymap in X11
-    xkbVariant = "";
+    xkb.layout = "us";                                  # Configure keymap in X11
+    xkb.variant = "";
   };
 
   # Enable printing
@@ -121,7 +127,7 @@ in
   # Enable printing service discovery on a local network
   services.avahi = {                              
     enable       = true;
-    nssmdns      = true;
+    nssmdns4     = true;
     openFirewall = true;                            # Wifi printing
   };
 

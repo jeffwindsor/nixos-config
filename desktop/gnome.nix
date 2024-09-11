@@ -1,5 +1,7 @@
 { pkgs, ... }:{
 
+  services.flatpak.enable = true;                   # enable flatpak usage
+
   # Add packages I like with Gnome
   environment.systemPackages = with pkgs; [
     wl-clipboard                        # wayland cli clipboard enabler
