@@ -7,7 +7,6 @@
     wl-clipboard                        # wayland cli clipboard enabler
     gnome-extension-manager             # improved extension manager
     gnome-firmware                      # firmware application
-    gnome.gnome-terminal                # simple backup terminal
     gnome.seahorse                      # manage encryption keys and passwords in the GnomeKeyring
 
     #### gnome extensions #####
@@ -45,7 +44,7 @@
   ];
 
   # Add the games pack
-  services.gnome.games.enable = true;
+  #services.gnome.games.enable = true;
 
   # Enable GDM and GNOME
   services.xserver = {

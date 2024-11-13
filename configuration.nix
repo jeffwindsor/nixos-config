@@ -13,12 +13,15 @@ in
 {
   # 2023-12-18 : temporary add to get past build issues, should resolve over time
   #  some package needs to be updated so this dependency is fixed
-  # nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-25.9.0"
+  ];
+
 
   # Include other modules
-  imports = [
-    ./desktop/qtile.nix
-    ./programs/zsh.nix
+  imports = [ 
+    <home-manager/nixos>
+    ./desktop/gnome.nix
     ./hardware-configuration.nix                    # Include the results of the hardware scan.
   ];
 
@@ -30,6 +33,19 @@ in
     description = userDescription;
     extraGroups = [ "networkmanager" "wheel" ];
   };
+  home-manager = {
+    users.mid = {
+      home.username = username;
+      home.homeDirectory = "/home/${username}";
+      imports = [ 
+        ./home.nix 
+        ./home/dconf-org-gnome.nix 
+      ];
+    };
+    useGlobalPkgs     = true;
+    useUserPackages   = true;
+  };
+
 
   # Boot loader
   boot.loader = {
@@ -40,6 +56,9 @@ in
     efi.canTouchEfiVariables = true;                # installation can modify EFI boot variables
   };
   boot.supportedFilesystems = [ "ntfs" ];           # USB Drives might have this format 
+ 
+  # Shells available to all users
+  environment.shells = with pkgs; [ bash nushell ];
 
   # Packages available to all users
   environment.systemPackages = with pkgs; [
@@ -77,7 +96,6 @@ in
   # Fonts available to all users
   fonts.packages = with pkgs; [
     jetbrains-mono
-    lexend
     nerdfonts
   ];
 
@@ -156,6 +174,6 @@ in
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "24.05"; # Did you read the comment?
 
 }
