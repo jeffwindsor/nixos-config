@@ -4,65 +4,56 @@
 
 { config, pkgs, ... }:
 let 
-  hostname       = "framework";
-  locale         = "en_US.UTF-8";
-  timezone       = "America/Los_Angeles";
-  username       = "mid";
+  hostname        = "framework";
+  keyboard_layout = "us";
+  locale          = "en_US.UTF-8";
+  timezone        = "America/Los_Angeles";
+  username        = "mid";
   userDescription = "The Middle Way";
 in
 {
   # Include other modules
   imports = [ 
     ./desktop/gnome.nix
-    ./hardware-configuration.nix                    # Include the results of the hardware scan.
+    ./package/git.nix
+    ./package/zsh.nix
+    # Requires the following channel
+    #   $ sudo nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.tar.gz nixos-hardware
+    #   $ sudo nix-channel --update
+    <nixos-hardware/framework/13-inch/11th-gen-intel>
+    # Include the results of the hardware scan.
+    /etc/nixos/hardware-configuration.nix
   ];
 
-  # Host and Users
-  networking.hostName = hostname;
-  time.timeZone = timezone;
-  users.users."${username}" = {
-    isNormalUser = true;
-    description = userDescription;
-    extraGroups = [ "networkmanager" "wheel" ];
-  };
-
   # Boot loader
-  boot.loader = {
-    systemd-boot = {
-      enable = true;                                # EFI boot manager
-      configurationLimit = 10;                      # limit to 10 generations
+  boot = {
+    loader = {
+      systemd-boot = {
+        enable = true;                           # EFI boot manager
+        configurationLimit = 10;                 # limit to 10 generations
+      };
+      efi.canTouchEfiVariables = true;           # installation can modify EFI boot variables
     };
-    efi.canTouchEfiVariables = true;                # installation can modify EFI boot variables
+    supportedFilesystems = [ "ntfs" ];           # USB Drives might have this format 
   };
-  boot.supportedFilesystems = [ "ntfs" ];           # USB Drives might have this format 
- 
-  # Shells available to all users
-  environment.shells = with pkgs; [ bash zsh ];
 
   # Packages available to all users
   environment.systemPackages = with pkgs; [
-    bash
     bat               # cat replacement
-    delta             # git pager
-    eza               # ls replacement
     fastfetch
     fd
-    fzf
-    git
-    lazygit
     neovim
     ripgrep
     sd
-    starship          # prompt
     stow              # dot file manager
     tldr
     yazi              # terminal file manager
     zellij            # multiplexer
     zoxide
 
-    #alacritty
+    alacritty
     wezterm
-    #qbittorrent
+    transmission
     firefox
     vlc
 
@@ -95,7 +86,10 @@ in
   };
 
   # Networking 
-  networking.networkmanager.enable = true;
+  networking = {
+    networkmanager.enable = true;
+    hostName = hostname;
+  };
 
   # Package Managers
   nix.settings.auto-optimise-store = true;          # automatic optimization
@@ -109,7 +103,7 @@ in
   # Enable the X11 windowing system
   services.xserver = {
     enable = true;
-    xkb.layout = "us";                                  # Configure keymap in X11
+    xkb.layout = keyboard_layout;                                  # Configure keymap in X11
     xkb.variant = "";
   };
 
@@ -145,7 +139,13 @@ in
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
 
+  time.timeZone = timezone;
 
+  users.users."${username}" = {
+    isNormalUser = true;
+    description = userDescription;
+    extraGroups = [ "networkmanager" "wheel" ];
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
