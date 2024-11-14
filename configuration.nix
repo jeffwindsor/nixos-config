@@ -11,16 +11,8 @@ let
   userDescription = "The Middle Way";
 in
 {
-  # 2023-12-18 : temporary add to get past build issues, should resolve over time
-  #  some package needs to be updated so this dependency is fixed
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-25.9.0"
-  ];
-
-
   # Include other modules
   imports = [ 
-    <home-manager/nixos>
     ./desktop/gnome.nix
     ./hardware-configuration.nix                    # Include the results of the hardware scan.
   ];
@@ -33,19 +25,6 @@ in
     description = userDescription;
     extraGroups = [ "networkmanager" "wheel" ];
   };
-  home-manager = {
-    users.mid = {
-      home.username = username;
-      home.homeDirectory = "/home/${username}";
-      imports = [ 
-        ./home.nix 
-        ./home/dconf-org-gnome.nix 
-      ];
-    };
-    useGlobalPkgs     = true;
-    useUserPackages   = true;
-  };
-
 
   # Boot loader
   boot.loader = {
@@ -58,7 +37,7 @@ in
   boot.supportedFilesystems = [ "ntfs" ];           # USB Drives might have this format 
  
   # Shells available to all users
-  environment.shells = with pkgs; [ bash nushell ];
+  environment.shells = with pkgs; [ bash zsh ];
 
   # Packages available to all users
   environment.systemPackages = with pkgs; [
