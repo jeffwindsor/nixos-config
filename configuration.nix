@@ -39,23 +39,24 @@ in
 
   # Packages available to all users
   environment.systemPackages = with pkgs; [
-    bat               # cat replacement
-    fastfetch
+    bat
+    eza
     fd
-    neovim
+    firefox        # web browser
+    fzf
+    google-chrome  # web browser
+    helix          # editor
+    nushell        # shell
     ripgrep
     sd
-    stow              # dot file manager
-    tldr
-    yazi              # terminal file manager
-    zellij            # multiplexer
-    zoxide
-
+    starship       # prompt
+    stow           # used for dotfiles
+    yazi           # file manager tui
+    zsh            # shell
+    
     alacritty
-    wezterm
-    transmission
-    firefox
-    vlc
+    ghostty
+    iina
 
     cups-brother-hll2350dw                          # home and office printer (2023)
     fwupd                                           # firmware update service
@@ -65,8 +66,7 @@ in
   
   # Fonts available to all users
   fonts.packages = with pkgs; [
-    jetbrains-mono
-    nerdfonts
+    nerd-fonts.jetbrains-mono
   ];
 
   # Internationalisation

@@ -8,9 +8,6 @@
   environment.systemPackages = with pkgs; [
     zsh
     
-    fzf
-    eza
-    starship          # prompt
   ];
   # enable zsh
   programs.zsh.enable = true;
