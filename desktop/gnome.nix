@@ -29,22 +29,22 @@
 
   # Exclude Packages from Gnome Derivation I do not need
   environment.gnome.excludePackages = with pkgs; [
-    gnome-tour                          # gnome first install tour
-    gnome.cheese                        # webcam tool
-    gnome.epiphany                      # web browser
-    gnome.gnome-initial-setup
-    gnome.gnome-maps
-    gnome.gnome-music
-    gnome.totem                         # gnome videos
-    gnome.yelp                          # Help view
+    gnome-tour                    # gnome first install tour
+    cheese                        # webcam tool
+    epiphany                      # web browser
+    gnome-initial-setup
+    gnome-maps
+    gnome-music
+    totem                         # gnome videos
+    yelp                          # Help view
     xterm
-    # gnome-photos                        # default photo app
-    # gnome.geary                         # email reader
+    # gnome-photos                  # default photo app
+    # gnome.geary                   # email reader
     # gnome.gnome-contacts
   ];
 
   # Add the games pack
-  #services.gnome.games.enable = true;
+  services.gnome.games.enable = true;
 
   # Enable GDM and GNOME
   services.xserver = {
