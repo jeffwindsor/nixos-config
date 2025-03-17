@@ -9,6 +9,7 @@
     gnome-firmware                      # firmware application
     seahorse                      # manage encryption keys and passwords in the GnomeKeyring
 
+
     #### gnome extensions #####
     gnomeExtensions.appindicator         # shows old-school icons in tray (some programs need this, like mega sync)
     #gnomeExtensions.auto-move-windows   # allow the forever assignment of application to a specific desktop

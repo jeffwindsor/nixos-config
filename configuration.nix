@@ -56,7 +56,7 @@ in
     
     alacritty
     ghostty
-    iina
+    # iina
 
     cups-brother-hll2350dw                          # home and office printer (2023)
     fwupd                                           # firmware update service
@@ -66,7 +66,8 @@ in
   
   # Fonts available to all users
   fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
+    jetbrains-mono
+    nerdfonts
   ];
 
   # Internationalisation
