@@ -7,7 +7,7 @@
     wl-clipboard                        # wayland cli clipboard enabler
     gnome-extension-manager             # improved extension manager
     gnome-firmware                      # firmware application
-    gnome.seahorse                      # manage encryption keys and passwords in the GnomeKeyring
+    seahorse                      # manage encryption keys and passwords in the GnomeKeyring
 
     #### gnome extensions #####
     gnomeExtensions.appindicator         # shows old-school icons in tray (some programs need this, like mega sync)
